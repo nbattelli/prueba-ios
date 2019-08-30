@@ -15,7 +15,10 @@
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
 		0FB2A104231710D7007167D9 /* rappi_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A103231710D7007167D9 /* rappi_iosTests.swift */; };
 		0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */; };
-		0FFBF7062317823C005CEB0D /* NetworkDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */; };
+		0FFBF7092318B697005CEB0D /* MovieConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF7082318B697005CEB0D /* MovieConfiguration.swift */; };
+		0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70B2318B95F005CEB0D /* Movie.swift */; };
+		0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70D2318C2CD005CEB0D /* Movies.swift */; };
+		0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF7102318C333005CEB0D /* Paginable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,10 @@
 		0FB2A103231710D7007167D9 /* rappi_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rappi_iosTests.swift; sourceTree = "<group>"; };
 		0FB2A105231710D7007167D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurator.swift; sourceTree = "<group>"; };
-		0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecodable.swift; sourceTree = "<group>"; };
+		0FFBF7082318B697005CEB0D /* MovieConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfiguration.swift; sourceTree = "<group>"; };
+		0FFBF70B2318B95F005CEB0D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		0FFBF70D2318C2CD005CEB0D /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		0FFBF7102318C333005CEB0D /* Paginable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +71,7 @@
 		0F8C363A231761D700FECB82 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0F8C363B231761DF00FECB82 /* Network */,
+				0FFBF70F2318C31C005CEB0D /* Protocol */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -75,9 +81,9 @@
 			children = (
 				0F8C363C231761F200FECB82 /* NetworkConnector.swift */,
 				0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */,
-				0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */,
 			);
-			path = Network;
+			name = Network;
+			path = Utils/Network;
 			sourceTree = "<group>";
 		};
 		0FB2A0E2231710C4007167D9 = {
@@ -101,6 +107,9 @@
 		0FB2A0ED231710C4007167D9 /* rappi-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0F8C363B231761DF00FECB82 /* Network */,
+				0FFBF70A2318B954005CEB0D /* Models */,
+				0FFBF7072318B02A005CEB0D /* Connectors */,
 				0F8C363A231761D700FECB82 /* Utils */,
 				0FB2A0EE231710C4007167D9 /* AppDelegate.swift */,
 				0FB2A0F0231710C4007167D9 /* ViewController.swift */,
@@ -119,6 +128,31 @@
 				0FB2A105231710D7007167D9 /* Info.plist */,
 			);
 			path = "rappi-iosTests";
+			sourceTree = "<group>";
+		};
+		0FFBF7072318B02A005CEB0D /* Connectors */ = {
+			isa = PBXGroup;
+			children = (
+				0FFBF7082318B697005CEB0D /* MovieConfiguration.swift */,
+			);
+			path = Connectors;
+			sourceTree = "<group>";
+		};
+		0FFBF70A2318B954005CEB0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0FFBF70B2318B95F005CEB0D /* Movie.swift */,
+				0FFBF70D2318C2CD005CEB0D /* Movies.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0FFBF70F2318C31C005CEB0D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0FFBF7102318C333005CEB0D /* Paginable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,11 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FFBF7062317823C005CEB0D /* NetworkDecodable.swift in Sources */,
+				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
+				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
+				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FB2A0F1231710C4007167D9 /* ViewController.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,
 				0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */,
+				0FFBF7092318B697005CEB0D /* MovieConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

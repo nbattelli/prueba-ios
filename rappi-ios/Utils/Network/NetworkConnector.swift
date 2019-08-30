@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Result<Model:NetworkDecodable> {
+enum Result<Model:Decodable> {
     case success(Model)
     case failure(String)
 }
@@ -18,14 +18,14 @@ private enum NetworkResponse {
     case failure(String)
 }
 
-private enum ResponseModel<Model:NetworkDecodable> {
+private enum ResponseModel<Model:Decodable> {
     case success(Model)
     case failure(String)
 }
 
 protocol NetworkConnectorProtocol {
     associatedtype Configuration: NetworkConfiguration
-    associatedtype Model: NetworkDecodable
+    associatedtype Model: Decodable
     func request(_ route: NetworkConfiguration, completion: @escaping (Result<Model>) -> Void)
     func cancel()
 }
@@ -33,7 +33,7 @@ protocol NetworkConnectorProtocol {
 let baseURLString = "https://api.themoviedb.org/3"
 let apiKey = "c10af0e7fc79b0c60d1c6f3179e109b6"
 
-final class NetworkConnector<Configuration: NetworkConfiguration, Model: NetworkDecodable>: NetworkConnectorProtocol {
+final class NetworkConnector<Configuration: NetworkConfiguration, Model: Decodable>: NetworkConnectorProtocol {
     
     let baseURL = URL(string: baseURLString)!
     
@@ -49,18 +49,22 @@ final class NetworkConnector<Configuration: NetworkConfiguration, Model: Network
             task = session.dataTask(with: request, completionHandler: { data, response, error in
                 if let response = response as? HTTPURLResponse {
                     let networkResult = self.handleNetworkResponse(response)
-                    switch networkResult {
-                    case .success:
-                        let responseModel = try! self.handleResponseModel(data: data)
-                        switch responseModel {
-                        case .success(let model):
-                            completion(.success(model))
+                    do {
+                        switch networkResult {
+                        case .success:
+                            let responseModel = try self.handleResponseModel(data: data)
+                            switch responseModel {
+                            case .success(let model):
+                                completion(.success(model))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                            
                         case .failure(let error):
                             completion(.failure(error))
                         }
-                        
-                    case .failure(let error):
-                        completion(.failure(error))
+                    } catch (let error) {
+                        completion(.failure(error.localizedDescription))
                     }
                 }
             })
@@ -142,12 +146,9 @@ extension NetworkConnector {
     
     private func handleResponseModel(data: Data?) throws -> ResponseModel<Model>
     {
-        let json = try JSONSerialization .jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? JSON
-        
-        guard let model = Model(dictionary: json) else {
-            return ResponseModel.failure("Parse model error message")
-        }
-        
+        guard let data = data else {return ResponseModel.failure("Parse model error message")}
+        let decoder = JSONDecoder()
+        let model = try decoder.decode(Model.self, from: data)
         return ResponseModel.success(model)
     }
 }

@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C363C231761F200FECB82 /* NetworkConnector.swift */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F1231710C4007167D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F0231710C4007167D9 /* ViewController.swift */; };
 		0FB2A0F4231710C4007167D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F2231710C4007167D9 /* Main.storyboard */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
 		0FB2A104231710D7007167D9 /* rappi_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A103231710D7007167D9 /* rappi_iosTests.swift */; };
+		0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */; };
+		0FFBF7062317823C005CEB0D /* NetworkDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F8C363C231761F200FECB82 /* NetworkConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnector.swift; sourceTree = "<group>"; };
 		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F0231710C4007167D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +40,8 @@
 		0FB2A0FF231710D7007167D9 /* rappi-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rappi-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A103231710D7007167D9 /* rappi_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rappi_iosTests.swift; sourceTree = "<group>"; };
 		0FB2A105231710D7007167D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurator.swift; sourceTree = "<group>"; };
+		0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F8C363A231761D700FECB82 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0F8C363B231761DF00FECB82 /* Network */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0F8C363B231761DF00FECB82 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0F8C363C231761F200FECB82 /* NetworkConnector.swift */,
+				0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */,
+				0FFBF7052317823C005CEB0D /* NetworkDecodable.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		0FB2A0E2231710C4007167D9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +101,7 @@
 		0FB2A0ED231710C4007167D9 /* rappi-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0F8C363A231761D700FECB82 /* Utils */,
 				0FB2A0EE231710C4007167D9 /* AppDelegate.swift */,
 				0FB2A0F0231710C4007167D9 /* ViewController.swift */,
 				0FB2A0F2231710C4007167D9 /* Main.storyboard */,
@@ -197,7 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFBF7062317823C005CEB0D /* NetworkDecodable.swift in Sources */,
 				0FB2A0F1231710C4007167D9 /* ViewController.swift in Sources */,
+				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
+				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,
 				0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

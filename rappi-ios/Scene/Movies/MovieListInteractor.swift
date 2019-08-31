@@ -10,24 +10,12 @@ import Foundation
 
 final class MovieListInteractor {
     var presenter: MovieListPresenterInterface!
-    
     let movieConnector = NetworkConnector<MovieConfigurator, Movies>()
 }
 
-extension MovieListInteractor: MovieListInteractorInterface {
-    func fetchTopRatedMovies(page: Int) {
-        movieConnector.request(MovieConfigurator.topRated(page: page)) { (result) in
-            switch result {
-            case .success(let model):
-                self.presenter.movieFetchedSuccess(model.results)
-            case .failure(let error):
-                self.presenter.movieFetchedFail(error)
-            }
-        }
-    }
-    
-    func fetchPopularMovies(page: Int) {
-        movieConnector.request(MovieConfigurator.popular(page: page)) { (result) in
+private extension MovieListInteractor {
+    private func fetchMovies(configurator: MovieConfigurator) {
+        movieConnector.request(configurator) { (result) in
             switch result {
             case .success(let model):
                 DispatchQueue.main.async { [weak self] in
@@ -40,17 +28,20 @@ extension MovieListInteractor: MovieListInteractorInterface {
             }
         }
     }
-    
-    func fetchUpcomingMovies(page: Int) {
-        movieConnector.request(MovieConfigurator.upCooming(page: page)) { (result) in
-            switch result {
-            case .success(let model):
-                self.presenter?.movieFetchedSuccess(model.results)
-            case .failure(let error):
-                self.presenter?.movieFetchedFail(error)
-            }
-        }
-    }
-    
 }
 
+extension MovieListInteractor: MovieListInteractorInterface {
+    func fetchMovie(category: MoviesCategory, page: Int) {
+        var configurator = MovieConfigurator.topRated(page: page)
+        switch category {
+        case .topRated:
+            configurator = MovieConfigurator.topRated(page: page)
+        case .popular:
+            configurator = MovieConfigurator.popular(page: page)
+        case .upComing:
+            configurator = MovieConfigurator.upComing(page: page)
+        }
+        
+        self.fetchMovies(configurator: configurator)
+    }
+}

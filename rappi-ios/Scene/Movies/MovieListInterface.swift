@@ -8,6 +8,12 @@
 
 import UIKit
 
+let defaultMoviesCategory = MoviesCategory.topRated
+
+enum MoviesCategory: Int {
+    case topRated, popular, upComing
+}
+
 //MARK: View
 protocol MovieListViewInterface: class {
     func update()
@@ -25,6 +31,7 @@ protocol MovieListPresenterInterface: class {
     var viewModel: [Movie]? {set get}
     
     func viewDidLoad()
+    func categoryDidChange(_ category: MoviesCategory)
     
     func movieFetchedSuccess(_ movie: [Movie])
     func movieFetchedFail(_ error: String)
@@ -34,9 +41,7 @@ protocol MovieListPresenterInterface: class {
 protocol MovieListInteractorInterface: class {
     var presenter: MovieListPresenterInterface! {set get}
     
-    func fetchTopRatedMovies(page: Int)
-    func fetchPopularMovies(page: Int)
-    func fetchUpcomingMovies(page: Int)
+    func fetchMovie(category: MoviesCategory, page: Int)
 }
 
 

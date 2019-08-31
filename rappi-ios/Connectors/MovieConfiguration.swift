@@ -11,7 +11,7 @@ import Foundation
 enum MovieConfigurator {
     case topRated(page:Int)
     case popular(page:Int)
-    case upCooming(page:Int)
+    case upComing(page:Int)
 }
 
 extension MovieConfigurator: NetworkConfiguration {
@@ -21,14 +21,14 @@ extension MovieConfigurator: NetworkConfiguration {
             return "movie/top_rated"
         case .popular:
             return "movie/popular"
-        case .upCooming:
+        case .upComing:
             return "movie/upcoming"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .topRated, .popular, .upCooming:
+        case .topRated, .popular, .upComing:
             return .get
         }
     }
@@ -43,7 +43,7 @@ extension MovieConfigurator: NetworkConfiguration {
             return ["page": page]
         case .popular(let page):
             return ["page": page]
-        case .upCooming(let page):
+        case .upComing(let page):
             return ["page": page]
         }
     }

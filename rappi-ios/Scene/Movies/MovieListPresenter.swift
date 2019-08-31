@@ -21,7 +21,11 @@ final class MovieListPresenter {
 
 extension MovieListPresenter: MovieListPresenterInterface {
     func viewDidLoad() {
-        self.interactor.fetchPopularMovies(page: 1)
+        self.categoryDidChange(defaultMoviesCategory)
+    }
+    
+    func categoryDidChange(_ category: MoviesCategory) {
+        self.interactor.fetchMovie(category: category, page: 1)
     }
     
     func movieFetchedSuccess(_ movie: [Movie]) {

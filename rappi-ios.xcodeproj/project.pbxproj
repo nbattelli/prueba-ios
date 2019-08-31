@@ -27,6 +27,8 @@
 		0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF726231A315F005CEB0D /* MovieListTableViewCell.swift */; };
 		0FFBF729231A315F005CEB0D /* MovieListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */; };
 		0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72A231ABB0A005CEB0D /* AppRouter.swift */; };
+		0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72D231AECEB005CEB0D /* TabBarController.swift */; };
+		0FFBF730231B0B0A005CEB0D /* MDCTabBar+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rappi_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.release.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.release.xcconfig"; sourceTree = "<group>"; };
 		C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.debug.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		0FFBF72D231AECEB005CEB0D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCTabBar+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				0FFBF70F2318C31C005CEB0D /* Protocol */,
+				0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 		0FB2A0ED231710C4007167D9 /* rappi-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0FFBF72C231AECCC005CEB0D /* Components */,
 				0FFBF721231A2AA9005CEB0D /* App */,
 				0FFBF7122318CF76005CEB0D /* Scene */,
 				0F8C363B231761DF00FECB82 /* Network */,
@@ -239,6 +245,14 @@
 				6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */,
 			);
 			name = Frameworks;
+            sourceTree = "<group>";
+        };
+		0FFBF72C231AECCC005CEB0D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,10 +411,12 @@
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
+				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
+				0FFBF730231B0B0A005CEB0D /* MDCTabBar+Util.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,

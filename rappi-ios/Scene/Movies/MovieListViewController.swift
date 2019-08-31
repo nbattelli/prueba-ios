@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialTabs
 
 final class MovieListViewController: UIViewController {
     
+    @IBOutlet weak var tabBar: UIView! {
+        didSet {
+            let tabBar = MDCTabBar.buildCustomTabBar(frame: self.tabBar.bounds, delegate: self)
+            tabBar.items = [
+                UITabBarItem(title: "Top", image: nil, tag: 0),
+                UITabBarItem(title: "Popular", image: nil, tag: 1),
+                UITabBarItem(title: "Nuevo", image: nil, tag: 2)
+            ]
+            self.tabBar.addSubview(tabBar)
+        }
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             self.tableView.dataSource = self
@@ -34,8 +46,8 @@ final class MovieListViewController: UIViewController {
         self.presenter.view = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.title = "Peliculas"
         self.presenter.viewDidLoad()
     }
@@ -76,4 +88,12 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension MovieListViewController: MDCTabBarDelegate {
+    func tabBar(_ tabBar: MDCTabBar, willSelect item: UITabBarItem) {
+        let index = tabBar.items.firstIndex(of: item) ?? 0
+        let category = MoviesCategory(rawValue: index) ?? defaultMoviesCategory
+        self.presenter.categoryDidChange(category)
+    }
 }

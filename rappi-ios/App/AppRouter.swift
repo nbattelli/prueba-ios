@@ -13,19 +13,28 @@ protocol AppRouterInterface {
 }
 
 final class AppRouter {
-    var tabBarController: UITabBarController!
+    var tabBarController: TabBarController!
     
     init() {
-        self.tabBarController = UITabBarController()
-        
-        
+        self.tabBarController = TabBarController()
+
         //Movie
         let movieListRouter = MovieListRouter()
         movieListRouter.mainRouter = self
         let movieListViewController = movieListRouter.buildMovieViewController()
-        movieListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        movieListViewController.tabBarItem = UITabBarItem(title: "Peliculas", image: nil, tag: 0)
         
-        self.tabBarController.viewControllers = [movieListViewController]
+        
+        let movieListRouter2 = MovieListRouter()
+        movieListRouter2.mainRouter = self
+        let movieListViewController2 = movieListRouter2.buildMovieViewController()
+        movieListViewController2.tabBarItem = UITabBarItem(title: "TV", image: nil, tag: 1)
+        
+        self.tabBarController.tabBar?.items = [movieListViewController.tabBarItem, movieListViewController2.tabBarItem]
+        
+        self.tabBarController.viewControllers = [movieListViewController, movieListViewController2]
+        
+        self.tabBarController.selectedViewController = movieListViewController
     }
     
     func initialViewController() -> UIViewController {

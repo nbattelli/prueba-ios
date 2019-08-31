@@ -19,8 +19,8 @@ protocol MovieListViewInterface: class {
 
 //MARK: Presenter
 protocol MovieListPresenterInterface: class {
-    var view: MovieListViewInterface? {set get}
-    var interactor: MovieListInteractorInterface? {set get}
+    var view: MovieListViewInterface! {set get}
+    var interactor: MovieListInteractorInterface! {set get}
     
     var viewModel: [Movie]? {set get}
     
@@ -32,7 +32,7 @@ protocol MovieListPresenterInterface: class {
 
 //MARK: Interactor
 protocol MovieListInteractorInterface: class {
-    var presenter: MovieListPresenterInterface? {set get}
+    var presenter: MovieListPresenterInterface! {set get}
     
     func fetchTopRatedMovies(page: Int)
     func fetchPopularMovies(page: Int)
@@ -42,6 +42,6 @@ protocol MovieListInteractorInterface: class {
 
 //MARK: Router
 protocol MovieListRouterInterface: class {
-    var mainRouter: AppRouter? {set get}
+    var mainRouter: AppRouter! {set get}
     func buildMovieViewController() -> UIViewController
 }

@@ -21,7 +21,7 @@ final class MovieListViewController: UIViewController {
         }
     }
     
-    var presenter: MovieListPresenterInterface?
+    var presenter: MovieListPresenterInterface!
     
     // MARK: - Initializers
     required init?(coder aDecoder: NSCoder) {
@@ -30,14 +30,14 @@ final class MovieListViewController: UIViewController {
     
     required public init(_ presenter: MovieListPresenterInterface? = MovieListPresenter()) {
         super.init(nibName: String(describing: type(of: self)), bundle: nil)
-        
         self.presenter = presenter
-        self.presenter?.view = self
+        self.presenter.view = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.presenter?.viewDidLoad()
+        self.title = "Peliculas"
+        self.presenter.viewDidLoad()
     }
 }
 

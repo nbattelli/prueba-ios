@@ -9,11 +9,14 @@
 import UIKit
 
 class MovieListRouter {
-    var mainRouter: AppRouter?
+    var mainRouter: AppRouter!
+    var navigationController: UINavigationController!
 }
 
 extension MovieListRouter: MovieListRouterInterface {    
     func buildMovieViewController() -> UIViewController {
-        return MovieListViewController(MovieListPresenter())
+        let vc = MovieListViewController(MovieListPresenter())
+        self.navigationController = UINavigationController(rootViewController: vc)
+        return self.navigationController
     }
 }

@@ -15,6 +15,7 @@ final class MovieListInteractor {
 
 private extension MovieListInteractor {
     private func fetchMovies(configurator: MovieConfigurator) {
+        movieConnector.cancel()
         movieConnector.request(configurator) { (result) in
             switch result {
             case .success(let model):

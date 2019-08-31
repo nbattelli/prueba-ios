@@ -1,0 +1,61 @@
+PODS:
+  - MaterialComponents/AnimationTiming (88.1.0)
+  - MaterialComponents/BottomNavigation (88.1.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Elevation (88.1.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (88.1.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Palettes (88.1.0)
+  - MaterialComponents/private/Application (88.1.0)
+  - MaterialComponents/private/Color (88.1.0)
+  - MaterialComponents/private/Math (88.1.0)
+  - MaterialComponents/Ripple (88.1.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (88.1.0)
+  - MaterialComponents/ShadowLayer (88.1.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Tabs (88.1.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (88.1.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+
+DEPENDENCIES:
+  - MaterialComponents/BottomNavigation
+  - MaterialComponents/Tabs
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MaterialComponents
+    - MDFInternationalization
+
+SPEC CHECKSUMS:
+  MaterialComponents: 54dfcfccc45439a158f9d3ad8bc0e39972f91db4
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+
+PODFILE CHECKSUM: 65cdd26a6be7e3829d782cb37462e30499fc9045
+
+COCOAPODS: 1.6.1

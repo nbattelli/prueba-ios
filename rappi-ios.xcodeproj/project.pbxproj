@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3F042AA4B6AD1817EFB9CB /* Pods_rappi_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */; };
 		0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C363C231761F200FECB82 /* NetworkConnector.swift */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
@@ -62,6 +63,9 @@
 		0FFBF726231A315F005CEB0D /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListTableViewCell.xib; sourceTree = "<group>"; };
 		0FFBF72A231ABB0A005CEB0D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rappi_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.release.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.release.xcconfig"; sourceTree = "<group>"; };
+		C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.debug.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3F042AA4B6AD1817EFB9CB /* Pods_rappi_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E04FAEBBCAC9BF03DC219B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */,
+				9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		0F8C363A231761D700FECB82 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +121,8 @@
 				0FB2A0ED231710C4007167D9 /* rappi-ios */,
 				0FB2A102231710D7007167D9 /* rappi-iosTests */,
 				0FB2A0EC231710C4007167D9 /* Products */,
+				0E04FAEBBCAC9BF03DC219B8 /* Pods */,
+				31BE3209399D7C2642000B2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +233,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		31BE3209399D7C2642000B2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FB2A108231710D7007167D9 /* Build configuration list for PBXNativeTarget "rappi-ios" */;
 			buildPhases = (
+				DC0D6F2708947512D692E1F0 /* [CP] Check Pods Manifest.lock */,
 				0FB2A0E7231710C4007167D9 /* Sources */,
 				0FB2A0E8231710C4007167D9 /* Frameworks */,
 				0FB2A0E9231710C4007167D9 /* Resources */,
+				8654E38197C3533F127FB82E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,6 +339,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8654E38197C3533F127FB82E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rappi-ios/Pods-rappi-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rappi-ios/Pods-rappi-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC0D6F2708947512D692E1F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rappi-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0FB2A0E7231710C4007167D9 /* Sources */ = {
@@ -483,6 +559,7 @@
 		};
 		0FB2A109231710D7007167D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -501,6 +578,7 @@
 		};
 		0FB2A10A231710D7007167D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

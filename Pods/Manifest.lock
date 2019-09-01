@@ -42,20 +42,26 @@ PODS:
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
 
 DEPENDENCIES:
   - MaterialComponents/BottomNavigation
   - MaterialComponents/Tabs
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MaterialComponents
     - MDFInternationalization
+    - SDWebImage
 
 SPEC CHECKSUMS:
   MaterialComponents: 54dfcfccc45439a158f9d3ad8bc0e39972f91db4
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: 65cdd26a6be7e3829d782cb37462e30499fc9045
+PODFILE CHECKSUM: 60c63b0608fa2f25a07157d0a01971805acba116
 
 COCOAPODS: 1.6.1

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
     
     @IBOutlet weak var movieImageView: UIImageView!

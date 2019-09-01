@@ -14,12 +14,12 @@ final class MovieListViewController: UIViewController {
     @IBOutlet weak var tabBar: UIView! {
         didSet {
             let tabBar = MDCTabBar.buildCustomTabBar(frame: self.tabBar.bounds, delegate: self)
+            self.tabBar.addSubview(tabBar)
             tabBar.items = [
                 UITabBarItem(title: "Top", image: nil, tag: 0),
                 UITabBarItem(title: "Popular", image: nil, tag: 1),
                 UITabBarItem(title: "Nuevo", image: nil, tag: 2)
             ]
-            self.tabBar.addSubview(tabBar)
         }
     }
     @IBOutlet weak var tableView: UITableView! {

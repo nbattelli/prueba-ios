@@ -29,8 +29,6 @@ protocol MovieListPresenterInterface: class {
     var view: MovieListViewInterface! {set get}
     var interactor: MovieListInteractorInterface! {set get}
     
-    var model: Movies? {set get}
-    
     func viewDidLoad()
     func categoryDidChange(_ category: MoviesCategory)
     

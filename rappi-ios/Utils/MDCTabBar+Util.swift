@@ -9,7 +9,7 @@
 import MaterialComponents.MaterialTabs
 
 extension MDCTabBar {
-
+ 
     static func buildCustomTabBar(frame: CGRect, delegate: MDCTabBarDelegate) -> MDCTabBar {
         let tabBar = MDCTabBar(frame: frame)
         tabBar.delegate = delegate
@@ -19,7 +19,7 @@ extension MDCTabBar {
         tabBar.alignment = .justified
         tabBar.itemAppearance = .titles
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
-        tabBar.displaysUppercaseTitles = true
+    
         tabBar.sizeToFit()
         return tabBar
     }

@@ -22,26 +22,15 @@ final class MovieListViewController: UIViewController {
             ]
         }
     }
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            self.tableView.backgroundColor = UIColor.primaryLightColor
-            self.tableView.dataSource = self
-            self.tableView.delegate = self
-            self.tableView.estimatedRowHeight = UITableView.automaticDimension
-            self.tableView.rowHeight = UITableView.automaticDimension
-            self.tableView.contentInset = UIEdgeInsets(top: 8,
-                                                       left: 0,
-                                                       bottom: 0,
-                                                       right: 0)
-            
-            let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
-            
-            registerCells.forEach {
-                let nibName = String(describing: $0)
-                let nib = UINib(nibName: nibName, bundle: nil)
-                self.tableView.register(nib, forCellReuseIdentifier: nibName)
-            }
-        }
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var containerTableView: UIStackView!
+    
+    let tableViews = [MoviesCategory.topRated: UITableView(),
+                      MoviesCategory.popular: UITableView(),
+                      MoviesCategory.upComing: UITableView()]
+    
+    var currentTableView: UITableView {
+        return self.tableViews[self.presenter.currentCategory]!
     }
     
     var presenter: MovieListPresenterInterface!
@@ -60,19 +49,51 @@ final class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Peliculas"
+        self.configureTableView()
         self.presenter.viewDidLoad()
+    }
+    
+    func configureTableView() {
+        let tableViews = self.tableViews.sorted {$0.key.rawValue < $1.key.rawValue}.map{$1}
+        tableViews.enumerated().forEach { (index, tableView) in
+            self.setupTableView(tableView)
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            self.containerTableView.addArrangedSubview(tableView)
+            tableView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+            tableView.heightAnchor.constraint(equalTo: self.containerTableView.heightAnchor).isActive = true
+        }
+    }
+    
+    func setupTableView(_ tableView: UITableView) {
+        tableView.backgroundColor = UIColor.primaryLightColor
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 136
+//        tableView.rowHeight = UITableView.automaticDimension
+        tableView.contentInset = UIEdgeInsets(top: 8,
+                                                   left: 0,
+                                                   bottom: 0,
+                                                   right: 0)
+        
+        let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
+        
+        registerCells.forEach {
+            let nibName = String(describing: $0)
+            let nib = UINib(nibName: nibName, bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: nibName)
+        }
     }
 }
 
 extension MovieListViewController: MovieListViewInterface {
     func update() {
-        self.tableView.reloadData()
+        self.currentTableView.reloadData()
     }
     
     func updateMoviesSection(at indexPats:[IndexPath]) {
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: indexPats, with: .left)
-        self.tableView.endUpdates()
+        self.currentTableView.beginUpdates()
+        self.currentTableView.insertRows(at: indexPats, with: .fade)
+        self.currentTableView.endUpdates()
     }
     
     func showError(_ error: String) {
@@ -119,5 +140,9 @@ extension MovieListViewController: MDCTabBarDelegate {
         let index = tabBar.items.firstIndex(of: item) ?? 0
         let category = MoviesCategory(rawValue: index) ?? defaultMoviesCategory
         self.presenter.categoryDidChange(category)
+        
+        let screenWidth = self.view.frame.size.width
+        let rectToScroll = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: 1)
+        self.scrollView.scrollRectToVisible(rectToScroll, animated: true)
     }
 }

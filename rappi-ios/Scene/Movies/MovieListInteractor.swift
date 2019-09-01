@@ -10,21 +10,26 @@ import Foundation
 
 final class MovieListInteractor {
     var presenter: MovieListPresenterInterface!
-    let movieConnector = NetworkConnector<MovieConfigurator, Movies>()
+    let movieConnectors = [MoviesCategory.topRated: NetworkConnector<MovieConfigurator, Movies>(),
+                           MoviesCategory.popular: NetworkConnector<MovieConfigurator, Movies>(),
+                           MoviesCategory.upComing: NetworkConnector<MovieConfigurator, Movies>()]
 }
 
 private extension MovieListInteractor {
-    private func fetchMovies(configurator: MovieConfigurator) {
-        movieConnector.cancel()
-        movieConnector.request(configurator) { (result) in
+    private func fetchMovies(connector: NetworkConnector<MovieConfigurator, Movies>,
+                             configurator: MovieConfigurator,
+                             category: MoviesCategory)
+    {
+        connector.cancel()
+        connector.request(configurator) { (result) in
             switch result {
             case .success(let model):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter.movieFetchedSuccess(model)
+                    self?.presenter.movieFetchedSuccess(model, category: category)
                 }
             case .failure(let error):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter.movieFetchedFail(error)
+                    self?.presenter.movieFetchedFail(error, category: category)
                 }
             }
         }
@@ -33,6 +38,7 @@ private extension MovieListInteractor {
 
 extension MovieListInteractor: MovieListInteractorInterface {
     func fetchMovie(category: MoviesCategory, page: Int) {
+        let connector = self.movieConnectors[category]!
         var configurator = MovieConfigurator.topRated(page: page)
         switch category {
         case .topRated:
@@ -43,6 +49,6 @@ extension MovieListInteractor: MovieListInteractorInterface {
             configurator = MovieConfigurator.upComing(page: page)
         }
         
-        self.fetchMovies(configurator: configurator)
+        self.fetchMovies(connector: connector, configurator: configurator, category: category)
     }
 }

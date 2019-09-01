@@ -11,7 +11,7 @@ import UIKit
 let defaultMoviesCategory = MoviesCategory.topRated
 
 enum MoviesCategory: Int {
-    case topRated, popular, upComing
+    case topRated = 0, popular, upComing
 }
 
 //MARK: View
@@ -29,11 +29,13 @@ protocol MovieListPresenterInterface: class {
     var view: MovieListViewInterface! {set get}
     var interactor: MovieListInteractorInterface! {set get}
     
+    var currentCategory: MoviesCategory { get }
+    
     func viewDidLoad()
     func categoryDidChange(_ category: MoviesCategory)
     
-    func movieFetchedSuccess(_ movies: Movies)
-    func movieFetchedFail(_ error: String)
+    func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
+    func movieFetchedFail(_ error: String, category: MoviesCategory)
     
     func numberOfSections() -> Int
     func numberOfCell(in section: Int) -> Int

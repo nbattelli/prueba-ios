@@ -12,8 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="rappi_ios" customModuleProvider="target">
             <connections>
+                <outlet property="containerTableView" destination="WbI-Vn-LAW" id="ovT-p7-hEj"/>
+                <outlet property="scrollView" destination="thD-Uu-5kM" id="DOO-Iz-w6A"/>
                 <outlet property="tabBar" destination="oQh-KB-asl" id="aMH-eL-HTA"/>
-                <outlet property="tableView" destination="DSm-Wo-4va" id="oY0-78-2ZI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TwL-C5-nGg"/>
             </connections>
         </placeholder>
@@ -22,10 +23,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DSm-Wo-4va">
-                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQh-KB-asl">
                     <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,16 +30,32 @@
                         <constraint firstAttribute="height" constant="48" id="hfJ-NH-bZ4"/>
                     </constraints>
                 </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thD-Uu-5kM">
+                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbI-Vn-LAW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="WbI-Vn-LAW" firstAttribute="width" secondItem="thD-Uu-5kM" secondAttribute="width" placeholder="YES" id="0kL-T7-ohD"/>
+                        <constraint firstAttribute="trailing" secondItem="WbI-Vn-LAW" secondAttribute="trailing" id="1dP-Qh-AFr"/>
+                        <constraint firstItem="WbI-Vn-LAW" firstAttribute="leading" secondItem="thD-Uu-5kM" secondAttribute="leading" id="8OM-3H-Wlg"/>
+                        <constraint firstItem="WbI-Vn-LAW" firstAttribute="height" secondItem="thD-Uu-5kM" secondAttribute="height" id="Gfa-W6-dCX"/>
+                        <constraint firstItem="WbI-Vn-LAW" firstAttribute="top" secondItem="thD-Uu-5kM" secondAttribute="top" id="pUY-ip-FRG"/>
+                        <constraint firstAttribute="bottom" secondItem="WbI-Vn-LAW" secondAttribute="bottom" id="upb-Ui-DaW"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="thD-Uu-5kM" secondAttribute="trailing" id="2qy-JT-lGV"/>
                 <constraint firstItem="oQh-KB-asl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Amy-9B-vyH"/>
                 <constraint firstItem="oQh-KB-asl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Blp-YD-yeS"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DSm-Wo-4va" secondAttribute="bottom" id="EYH-JM-HZQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oQh-KB-asl" secondAttribute="trailing" id="LMG-lG-IQt"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DSm-Wo-4va" secondAttribute="trailing" id="d6c-9p-HxP"/>
-                <constraint firstItem="DSm-Wo-4va" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dJT-1Y-IbT"/>
-                <constraint firstItem="DSm-Wo-4va" firstAttribute="top" secondItem="oQh-KB-asl" secondAttribute="bottom" id="rGg-af-Psp"/>
+                <constraint firstItem="thD-Uu-5kM" firstAttribute="top" secondItem="oQh-KB-asl" secondAttribute="bottom" id="clf-AZ-7tG"/>
+                <constraint firstItem="thD-Uu-5kM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nN5-TY-Nh3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="thD-Uu-5kM" secondAttribute="bottom" id="o7o-oQ-sMV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="135.38230884557723"/>

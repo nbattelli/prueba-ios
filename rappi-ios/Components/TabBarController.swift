@@ -19,10 +19,10 @@ class TabBarController: MDCTabBarViewController {
     func loadTabBar() {
         tabBar?.delegate = self
         tabBar?.selectedItem = tabBar?.items.first
-        tabBar?.backgroundColor = MDCPalette.grey.tint900
-        tabBar?.selectedItemTintColor = .white
-        tabBar?.unselectedItemTintColor = MDCPalette.grey.tint400
-        tabBar?.inkColor = MDCPalette.blueGrey.tint100
+        tabBar?.backgroundColor = UIColor.primaryColor
+        tabBar?.selectedItemTintColor = UIColor.secondaryLightColor
+        tabBar?.unselectedItemTintColor = UIColor.primaryTextColor
+        tabBar?.inkColor = UIColor.secondaryLightColor
     }
 
 }

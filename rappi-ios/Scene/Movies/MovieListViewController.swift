@@ -24,9 +24,15 @@ final class MovieListViewController: UIViewController {
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
+            self.tableView.backgroundColor = UIColor.primaryLightColor
             self.tableView.dataSource = self
             self.tableView.delegate = self
+            self.tableView.estimatedRowHeight = UITableView.automaticDimension
             self.tableView.rowHeight = UITableView.automaticDimension
+            self.tableView.contentInset = UIEdgeInsets(top: 8,
+                                                       left: 0,
+                                                       bottom: 0,
+                                                       right: 0)
             
             let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
             
@@ -63,6 +69,12 @@ extension MovieListViewController: MovieListViewInterface {
         self.tableView.reloadData()
     }
     
+    func updateMoviesSection(at indexPats:[IndexPath]) {
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: indexPats, with: .left)
+        self.tableView.endUpdates()
+    }
+    
     func showError(_ error: String) {
         print("show error \(error)")
     }
@@ -94,8 +106,6 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         let identifier = configurator.reuseId
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         configurator.configure(cell: cell)
-        print(cell)
-        
         return cell
     }
     

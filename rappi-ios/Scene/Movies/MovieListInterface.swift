@@ -17,6 +17,7 @@ enum MoviesCategory: Int {
 //MARK: View
 protocol MovieListViewInterface: class {
     func update()
+    func updateMoviesSection(at indexPats:[IndexPath])
     func showError(_ error: String)
     func hideError()
     func showLoading(message: String)

@@ -22,7 +22,7 @@ final class AppRouter {
         let movieListRouter = MovieListRouter()
         movieListRouter.mainRouter = self
         let movieListViewController = movieListRouter.buildMovieViewController()
-        movieListViewController.tabBarItem = UITabBarItem(title: "Peliculas", image: nil, tag: 0)
+        movieListViewController.tabBarItem = UITabBarItem(title: "Peliculas", image: UIImage(named: "tabbar-movie"), tag: 0)
         
         
         let movieListRouter2 = MovieListRouter()

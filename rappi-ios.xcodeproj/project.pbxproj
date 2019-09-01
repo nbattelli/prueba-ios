@@ -14,6 +14,8 @@
 		0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */; };
 		0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */; };
 		0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */; };
+		0F9CFA08231C0C6A00322DAB /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */; };
+		0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 		0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
 		0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
+		0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Configuration.swift"; sourceTree = "<group>"; };
 		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F5231710D7007167D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				0FFBF70F2318C31C005CEB0D /* Protocol */,
 				0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */,
 				0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */,
+				0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */,
+				0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
+				0F9CFA08231C0C6A00322DAB /* UIColor+Palette.swift in Sources */,
 				0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */,
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
@@ -446,6 +453,7 @@
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
 				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,
+				0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,
 				0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */,
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,

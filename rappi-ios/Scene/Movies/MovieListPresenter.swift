@@ -33,13 +33,20 @@ extension MovieListPresenter: MovieListPresenterInterface {
     }
     
     func movieFetchedSuccess(_ movies: Movies) {
-        if model == nil {
+        guard let model = self.model else {
             self.model = movies
-        } else {
-            self.model?.results.append(contentsOf: movies.results)
-            self.model?.currentPage = movies.currentPage
+            self.view.update()
+            return
         }
-        self.view.update()
+        
+        let newMoviews = movies.results
+        self.model?.results.append(contentsOf: newMoviews)
+        self.model?.currentPage = movies.currentPage
+        
+        let startIndex = model.results.count - newMoviews.count
+        let endIndex = startIndex + newMoviews.count
+        let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        self.view.updateMoviesSection(at:indexes)
     }
     
     func movieFetchedFail(_ error: String) {
@@ -66,11 +73,9 @@ extension MovieListPresenter: MovieListPresenterInterface {
         if indexPath.section == 0,
             let movie = self.model?.results[indexPath.row] {
 
-            let urlString = "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "default")"
-
             let viewModel = MovieListCellViewModel.init(title: movie.title,
                                                         movieDescription: movie.overview,
-                                                        imageURL: URL(string: urlString)!)
+                                                        imagePath: movie.posterPath)
             return TableCellConfigurator<MovieListTableViewCell, MovieListCellViewModel>(item: viewModel)
         } else {
             self.interactor.fetchMovie(category: .topRated, page: self.model?.nextPage ?? 0)

@@ -13,8 +13,9 @@ extension MDCTabBar {
     static func buildCustomTabBar(frame: CGRect, delegate: MDCTabBarDelegate) -> MDCTabBar {
         let tabBar = MDCTabBar(frame: frame)
         tabBar.delegate = delegate
-        tabBar.tintColor = MDCPalette.grey.tint400
-        tabBar.barTintColor = MDCPalette.grey.tint900
+        tabBar.tintColor = UIColor.secondaryLightColor
+        tabBar.barTintColor = UIColor.primaryColor
+        tabBar.inkColor = UIColor.secondaryLightColor
         tabBar.alignment = .justified
         tabBar.itemAppearance = .titles
         tabBar.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]

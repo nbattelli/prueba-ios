@@ -27,9 +27,14 @@ final class MovieListViewController: UIViewController {
             self.tableView.dataSource = self
             self.tableView.delegate = self
             self.tableView.rowHeight = UITableView.automaticDimension
-            let nibName = String(describing: MovieListTableViewCell.self)
-            let nib = UINib(nibName: nibName, bundle: nil)
-            self.tableView.register(nib, forCellReuseIdentifier: nibName)
+            
+            let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
+            
+            registerCells.forEach {
+                let nibName = String(describing: $0)
+                let nib = UINib(nibName: nibName, bundle: nil)
+                self.tableView.register(nib, forCellReuseIdentifier: nibName)
+            }
         }
     }
     
@@ -76,18 +81,27 @@ extension MovieListViewController: MovieListViewInterface {
 }
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.presenter.numberOfSections()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presenter?.viewModel?.count ?? 0
+        return self.presenter.numberOfCell(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = String(describing: MovieListTableViewCell.self)
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MovieListTableViewCell
-        cell.titleLabel.text = self.presenter?.viewModel?[indexPath.row].title ?? "default"
+        let configurator = self.presenter.cellConfigurator(at: indexPath)
+        let identifier = configurator.reuseId
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        configurator.configure(cell: cell)
+        print(cell)
+        
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.cellWasTapped(at: indexPath)
+    }
 }
 
 extension MovieListViewController: MDCTabBarDelegate {

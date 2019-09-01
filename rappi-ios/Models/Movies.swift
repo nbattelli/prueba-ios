@@ -10,7 +10,7 @@ import Foundation
 
 struct Movies: Decodable, Paginable {
     
-    let results: [Movie]
+    var results: [Movie]
     var currentPage: Int
     var totalPages: Int
     

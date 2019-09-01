@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0A3F042AA4B6AD1817EFB9CB /* Pods_rappi_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */; };
 		0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C363C231761F200FECB82 /* NetworkConnector.swift */; };
+		0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */; };
+		0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */; };
+		0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */; };
+		0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */; };
+		0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
@@ -43,6 +48,11 @@
 
 /* Begin PBXFileReference section */
 		0F8C363C231761F200FECB82 /* NetworkConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnector.swift; sourceTree = "<group>"; };
+		0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
+		0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
+		0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F5231710D7007167D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,11 +75,11 @@
 		0FFBF726231A315F005CEB0D /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListTableViewCell.xib; sourceTree = "<group>"; };
 		0FFBF72A231ABB0A005CEB0D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		0FFBF72D231AECEB005CEB0D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCTabBar+Util.swift"; sourceTree = "<group>"; };
 		6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rappi_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.release.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.release.xcconfig"; sourceTree = "<group>"; };
 		C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.debug.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		0FFBF72D231AECEB005CEB0D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCTabBar+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,15 +107,16 @@
 				C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */,
 				9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		0F8C363A231761D700FECB82 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */,
 				0FFBF70F2318C31C005CEB0D /* Protocol */,
 				0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */,
+				0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -118,6 +129,15 @@
 			);
 			name = Network;
 			path = Utils/Network;
+			sourceTree = "<group>";
+		};
+		0F9CFA00231B75C900322DAB /* Loading Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */,
+				0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */,
+			);
+			path = "Loading Cell";
 			sourceTree = "<group>";
 		};
 		0FB2A0E2231710C4007167D9 = {
@@ -224,19 +244,29 @@
 		0FFBF724231A2FFF005CEB0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0FFBF725231A30DB005CEB0D /* Cell */,
+				0FFBF725231A30DB005CEB0D /* Movie Cell */,
 				0FFBF722231A2FE2005CEB0D /* MovieListViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		0FFBF725231A30DB005CEB0D /* Cell */ = {
+		0FFBF725231A30DB005CEB0D /* Movie Cell */ = {
 			isa = PBXGroup;
 			children = (
 				0FFBF726231A315F005CEB0D /* MovieListTableViewCell.swift */,
+				0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */,
 				0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */,
 			);
-			path = Cell;
+			path = "Movie Cell";
+			sourceTree = "<group>";
+		};
+		0FFBF72C231AECCC005CEB0D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0F9CFA00231B75C900322DAB /* Loading Cell */,
+				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		31BE3209399D7C2642000B2B /* Frameworks */ = {
@@ -245,14 +275,6 @@
 				6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */,
 			);
 			name = Frameworks;
-            sourceTree = "<group>";
-        };
-		0FFBF72C231AECCC005CEB0D /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FFBF729231A315F005CEB0D /* MovieListTableViewCell.xib in Resources */,
+				0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */,
 				0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */,
 				0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */,
 				0FFBF723231A2FE2005CEB0D /* MovieListViewController.xib in Resources */,
@@ -412,13 +435,17 @@
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
+				0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
+				0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */,
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
+				0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */,
 				0FFBF730231B0B0A005CEB0D /* MDCTabBar+Util.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
+				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,
 				0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */,
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,

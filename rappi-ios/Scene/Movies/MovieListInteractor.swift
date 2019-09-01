@@ -20,7 +20,7 @@ private extension MovieListInteractor {
             switch result {
             case .success(let model):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter.movieFetchedSuccess(model.results)
+                    self?.presenter.movieFetchedSuccess(model)
                 }
             case .failure(let error):
                 DispatchQueue.main.async { [weak self] in

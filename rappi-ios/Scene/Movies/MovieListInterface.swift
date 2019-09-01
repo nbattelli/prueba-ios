@@ -28,13 +28,18 @@ protocol MovieListPresenterInterface: class {
     var view: MovieListViewInterface! {set get}
     var interactor: MovieListInteractorInterface! {set get}
     
-    var viewModel: [Movie]? {set get}
+    var model: Movies? {set get}
     
     func viewDidLoad()
     func categoryDidChange(_ category: MoviesCategory)
     
-    func movieFetchedSuccess(_ movie: [Movie])
+    func movieFetchedSuccess(_ movies: Movies)
     func movieFetchedFail(_ error: String)
+    
+    func numberOfSections() -> Int
+    func numberOfCell(in section: Int) -> Int
+    func cellConfigurator(at indexPath: IndexPath) -> CellConfigurator
+    func cellWasTapped(at indexPath: IndexPath)
 }
 
 //MARK: Interactor

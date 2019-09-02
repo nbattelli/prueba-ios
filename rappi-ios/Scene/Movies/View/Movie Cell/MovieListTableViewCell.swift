@@ -10,7 +10,17 @@ import UIKit
 
 final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
     
-    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var containerView : UIView! {
+        didSet {
+            self.containerView.backgroundColor = UIColor.primaryColor
+            self.containerView.layer.cornerRadius = 8
+        }
+    }
+    @IBOutlet weak var movieImageView: UIImageView! {
+        didSet {
+            self.movieImageView.layer.cornerRadius = 8
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.textColor = UIColor.primaryTextColor
@@ -24,7 +34,7 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.primaryLightColor
+        self.backgroundColor = UIColor.primaryDarkColor
     }
     
     override func prepareForReuse() {

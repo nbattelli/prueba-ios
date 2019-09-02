@@ -68,10 +68,7 @@ final class MovieListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 136
-        tableView.contentInset = UIEdgeInsets(top: 8,
-                                              left: 0,
-                                              bottom: 0,
-                                              right: 0)
+        tableView.separatorStyle = .none
         
         let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
         
@@ -82,6 +79,9 @@ final class MovieListViewController: UIViewController {
         }
         
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        searchBar.tintColor = UIColor.secondaryColor
+        searchBar.barTintColor = UIColor.primaryColor
+        searchBar.returnKeyType = .done
         searchBar.delegate = self
         searchBar.sizeToFit()
         tableView.tableHeaderView = searchBar
@@ -169,5 +169,19 @@ extension MovieListViewController: MDCTabBarDelegate {
 extension MovieListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.presenter.filterMovies(searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
     }
 }

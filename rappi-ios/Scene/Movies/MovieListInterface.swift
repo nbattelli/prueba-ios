@@ -8,16 +8,27 @@
 
 import UIKit
 
-let defaultMoviesCategory = MoviesCategory.topRated
-
-enum MoviesCategory: Int {
-    case topRated = 0, popular, upComing
+enum MoviesCategory: Int, CaseIterable {
+    case topRated, popular, upComing
+    
+    static var defaultMoviesCategory: MoviesCategory {
+        return MoviesCategory.allCases.first!
+    }
+    
+    var description: String {
+        switch self {
+        case .topRated: return "Top"
+        case .popular: return "Popular"
+        case .upComing: return "Nuevo"
+        }
+    }
 }
 
 //MARK: View
 protocol MovieListViewInterface: class {
     func update()
-    func updateMoviesSection(at indexPats:[IndexPath])
+    func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory)
+    func updateMoviesSection(at indexPaths:[IndexPath], removeSection: Int, category: MoviesCategory)
     func showError(_ error: String)
     func hideError()
     func showLoading(message: String)
@@ -37,10 +48,11 @@ protocol MovieListPresenterInterface: class {
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
     func movieFetchedFail(_ error: String, category: MoviesCategory)
     
-    func numberOfSections() -> Int
-    func numberOfCell(in section: Int) -> Int
-    func cellConfigurator(at indexPath: IndexPath) -> CellConfigurator
-    func cellWasTapped(at indexPath: IndexPath)
+    func numberOfSections(category: MoviesCategory) -> Int
+    func numberOfCell(in section: Int, category: MoviesCategory) -> Int
+    func cellConfigurator(at indexPath: IndexPath, category: MoviesCategory) -> CellConfigurator
+    func cellWasTapped(at indexPath: IndexPath, category: MoviesCategory)
+    func filterMovies(_ filter: String)
 }
 
 //MARK: Interactor
@@ -56,3 +68,4 @@ protocol MovieListRouterInterface: class {
     var mainRouter: AppRouter! {set get}
     func buildMovieViewController() -> UIViewController
 }
+

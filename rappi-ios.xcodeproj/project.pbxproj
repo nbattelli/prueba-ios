@@ -35,7 +35,7 @@
 		0FFBF729231A315F005CEB0D /* MovieListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */; };
 		0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72A231ABB0A005CEB0D /* AppRouter.swift */; };
 		0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72D231AECEB005CEB0D /* TabBarController.swift */; };
-		0FFBF730231B0B0A005CEB0D /* MDCTabBar+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */; };
+		0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF72F231B0B0A005CEB0D /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 		0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListTableViewCell.xib; sourceTree = "<group>"; };
 		0FFBF72A231ABB0A005CEB0D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		0FFBF72D231AECEB005CEB0D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MDCTabBar+Util.swift"; sourceTree = "<group>"; };
+		0FFBF72F231B0B0A005CEB0D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		6D2CC9E1BE6174B776D67787 /* Pods_rappi_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rappi_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D56642263B6C04E72C2F685 /* Pods-rappi-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.release.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.release.xcconfig"; sourceTree = "<group>"; };
 		C883F4DE10E2959CA25BF8A2 /* Pods-rappi-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rappi-ios.debug.xcconfig"; path = "Target Support Files/Pods-rappi-ios/Pods-rappi-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 			children = (
 				0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */,
 				0FFBF70F2318C31C005CEB0D /* Protocol */,
-				0FFBF72F231B0B0A005CEB0D /* MDCTabBar+Util.swift */,
 				0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */,
 				0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */,
 				0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */,
@@ -271,6 +270,7 @@
 			children = (
 				0F9CFA00231B75C900322DAB /* Loading Cell */,
 				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
+				0FFBF72F231B0B0A005CEB0D /* TabBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -451,7 +451,7 @@
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
 				0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */,
-				0FFBF730231B0B0A005CEB0D /* MDCTabBar+Util.swift in Sources */,
+				0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
 				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,

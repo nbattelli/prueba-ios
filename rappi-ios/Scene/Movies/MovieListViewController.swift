@@ -13,21 +13,18 @@ final class MovieListViewController: UIViewController {
     
     @IBOutlet weak var tabBar: UIView! {
         didSet {
-            let tabBar = MDCTabBar.buildCustomTabBar(frame: self.tabBar.bounds, delegate: self)
+            let tabBar = TabBar(frame: self.tabBar.bounds, delegate: self)
             self.tabBar.addSubview(tabBar)
-            tabBar.items = [
-                UITabBarItem(title: "Top", image: nil, tag: 0),
-                UITabBarItem(title: "Popular", image: nil, tag: 1),
-                UITabBarItem(title: "Nuevo", image: nil, tag: 2)
-            ]
+            let allCategories = MoviesCategory.allCases.sorted { $0.rawValue < $1.rawValue }
+            tabBar.items = allCategories.enumerated().map {
+                UITabBarItem(title: $1.description, image: nil, tag: $0)
+            }
         }
     }
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerTableView: UIStackView!
     
-    let tableViews = [MoviesCategory.topRated: UITableView(),
-                      MoviesCategory.popular: UITableView(),
-                      MoviesCategory.upComing: UITableView()]
+    var tableViews: [MoviesCategory: UITableView]
     
     var currentTableView: UITableView {
         return self.tableViews[self.presenter.currentCategory]!
@@ -41,8 +38,10 @@ final class MovieListViewController: UIViewController {
     }
     
     required public init(_ presenter: MovieListPresenterInterface? = MovieListPresenter()) {
-        super.init(nibName: String(describing: type(of: self)), bundle: nil)
+        self.tableViews = Dictionary(uniqueKeysWithValues: MoviesCategory.allCases.map {($0,UITableView())})
         self.presenter = presenter
+        super.init(nibName: String(describing: type(of: self)), bundle: nil)
+        
         self.presenter.view = self
     }
     
@@ -69,11 +68,10 @@ final class MovieListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 136
-//        tableView.rowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 8,
-                                                   left: 0,
-                                                   bottom: 0,
-                                                   right: 0)
+                                              left: 0,
+                                              bottom: 0,
+                                              right: 0)
         
         let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
         
@@ -82,6 +80,17 @@ final class MovieListViewController: UIViewController {
             let nib = UINib(nibName: nibName, bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: nibName)
         }
+        
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        tableView.tableHeaderView = searchBar
+    }
+    
+    func getCategory(for tableView: UITableView) -> MoviesCategory? {
+        return self.tableViews.first(where: { (key, value) in
+            return value == tableView
+        })?.key
     }
 }
 
@@ -90,10 +99,19 @@ extension MovieListViewController: MovieListViewInterface {
         self.currentTableView.reloadData()
     }
     
-    func updateMoviesSection(at indexPats:[IndexPath]) {
-        self.currentTableView.beginUpdates()
-        self.currentTableView.insertRows(at: indexPats, with: .fade)
-        self.currentTableView.endUpdates()
+    func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory) {
+        let tableView = self.tableViews[category]!
+        tableView.beginUpdates()
+        tableView.insertRows(at: indexPaths, with: .fade)
+        tableView.endUpdates()
+    }
+    
+    func updateMoviesSection(at indexPaths: [IndexPath], removeSection: Int, category: MoviesCategory) {
+        let tableView = self.tableViews[category]!
+        tableView.beginUpdates()
+        tableView.deleteSections([removeSection], with: .automatic)
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        tableView.endUpdates()
     }
     
     func showError(_ error: String) {
@@ -115,15 +133,16 @@ extension MovieListViewController: MovieListViewInterface {
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.presenter.numberOfSections()
+        return self.presenter.numberOfSections(category: self.getCategory(for: tableView)!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presenter.numberOfCell(in: section)
+        return self.presenter.numberOfCell(in: section, category: self.getCategory(for: tableView)!)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let configurator = self.presenter.cellConfigurator(at: indexPath)
+        let configurator = self.presenter.cellConfigurator(at: indexPath,
+                                                           category: self.getCategory(for: tableView)!)
         let identifier = configurator.reuseId
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         configurator.configure(cell: cell)
@@ -131,18 +150,24 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presenter.cellWasTapped(at: indexPath)
+        self.presenter.cellWasTapped(at: indexPath, category: self.getCategory(for: tableView)!)
     }
 }
 
 extension MovieListViewController: MDCTabBarDelegate {
     func tabBar(_ tabBar: MDCTabBar, willSelect item: UITabBarItem) {
         let index = tabBar.items.firstIndex(of: item) ?? 0
-        let category = MoviesCategory(rawValue: index) ?? defaultMoviesCategory
+        let category = MoviesCategory(rawValue: index) ?? MoviesCategory.defaultMoviesCategory
         self.presenter.categoryDidChange(category)
         
         let screenWidth = self.view.frame.size.width
         let rectToScroll = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: 1)
         self.scrollView.scrollRectToVisible(rectToScroll, animated: true)
+    }
+}
+
+extension MovieListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.presenter.filterMovies(searchText)
     }
 }

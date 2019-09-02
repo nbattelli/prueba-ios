@@ -17,12 +17,12 @@ class TabBarController: MDCTabBarViewController {
     }
     
     func loadTabBar() {
-        tabBar?.delegate = self
-        tabBar?.selectedItem = tabBar?.items.first
-        tabBar?.backgroundColor = UIColor.primaryColor
-        tabBar?.selectedItemTintColor = UIColor.secondaryLightColor
-        tabBar?.unselectedItemTintColor = UIColor.primaryTextColor
-        tabBar?.inkColor = UIColor.secondaryLightColor
+        self.tabBar?.delegate = self
+        self.tabBar?.selectedItem = tabBar?.items.first
+        self.tabBar?.backgroundColor = UIColor.primaryColor
+        self.tabBar?.selectedItemTintColor = UIColor.secondaryLightColor
+        self.tabBar?.unselectedItemTintColor = UIColor.primaryTextColor
+        self.tabBar?.inkColor = UIColor.secondaryLightColor.withAlphaComponent(0.2)
     }
 
 }

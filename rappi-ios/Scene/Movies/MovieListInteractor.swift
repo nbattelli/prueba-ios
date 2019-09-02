@@ -10,9 +10,11 @@ import Foundation
 
 final class MovieListInteractor {
     var presenter: MovieListPresenterInterface!
-    let movieConnectors = [MoviesCategory.topRated: NetworkConnector<MovieConfigurator, Movies>(),
-                           MoviesCategory.popular: NetworkConnector<MovieConfigurator, Movies>(),
-                           MoviesCategory.upComing: NetworkConnector<MovieConfigurator, Movies>()]
+    let movieConnectors: [MoviesCategory: NetworkConnector<MovieConfigurator, Movies>]!
+    
+    init() {
+        self.movieConnectors = Dictionary(uniqueKeysWithValues: MoviesCategory.allCases.map {($0,NetworkConnector<MovieConfigurator, Movies>())})
+    }
 }
 
 private extension MovieListInteractor {

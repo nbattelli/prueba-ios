@@ -48,6 +48,7 @@ PODS:
 
 DEPENDENCIES:
   - MaterialComponents/BottomNavigation
+  - MaterialComponents/Ink
   - MaterialComponents/Tabs
   - SDWebImage
 
@@ -62,6 +63,6 @@ SPEC CHECKSUMS:
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: 60c63b0608fa2f25a07157d0a01971805acba116
+PODFILE CHECKSUM: 536696ba6d0af23dc7f9f6d41feec35fcbccd681
 
 COCOAPODS: 1.6.1

@@ -6,6 +6,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'rappi-ios' do
+  pod 'MaterialComponents/Ink'
   pod 'MaterialComponents/Tabs'
   pod 'MaterialComponents/BottomNavigation'
   pod 'SDWebImage'

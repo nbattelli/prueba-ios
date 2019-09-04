@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialInk
 
 final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
+    
+    var inkController: MDCInkTouchController!
     
     @IBOutlet weak var containerView : UIView! {
         didSet {
@@ -16,6 +19,7 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
             self.containerView.layer.cornerRadius = 8
         }
     }
+    
     @IBOutlet weak var movieImageView: UIImageView! {
         didSet {
             self.movieImageView.layer.cornerRadius = 8
@@ -35,6 +39,10 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.primaryDarkColor
+        
+        self.inkController = MDCInkTouchController(view: self.containerView)
+        inkController.addInkView()
+        inkController.defaultInkView.inkColor = UIColor.secondaryLightColor.withAlphaComponent(0.2)
     }
     
     override func prepareForReuse() {

@@ -53,3 +53,9 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
         }
     }
 }
+
+extension MovieListTableViewCell: CellTransitionViewProtocol {
+    func transitionImageView() -> UIImageView {
+        return self.movieImageView
+    }
+}

@@ -11,6 +11,9 @@ import MaterialComponents.MaterialTabs
 
 final class MovieListViewController: UIViewController {
     
+    var originalFrame:CGRect!
+    var image: UIImage!
+    
     @IBOutlet weak var tabBar: UIView! {
         didSet {
             let tabBar = TabBar(frame: self.tabBar.bounds, delegate: self)
@@ -37,12 +40,12 @@ final class MovieListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    required public init(_ presenter: MovieListPresenterInterface? = MovieListPresenter()) {
+    required public init(_ presenter: MovieListPresenterInterface) {
         self.tableViews = Dictionary(uniqueKeysWithValues: MoviesCategory.allCases.map {($0,UITableView())})
         self.presenter = presenter
         super.init(nibName: String(describing: type(of: self)), bundle: nil)
         
-        self.presenter.view = self
+        self.presenter.viewDelegate = self
     }
     
     override func viewDidLoad() {
@@ -64,7 +67,7 @@ final class MovieListViewController: UIViewController {
     }
     
     func setupTableView(_ tableView: UITableView) {
-        tableView.backgroundColor = UIColor.primaryLightColor
+        tableView.backgroundColor = UIColor.primaryDarkColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 136
@@ -150,7 +153,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presenter.cellWasTapped(at: indexPath, category: self.getCategory(for: tableView)!)
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellTransitionViewProtocol else {return}
+        self.presenter.cellWasTapped(cell, at: indexPath, category: self.getCategory(for: tableView)!)
     }
 }
 
@@ -173,6 +177,7 @@ extension MovieListViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
+        self.presenter.filterMovies("")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

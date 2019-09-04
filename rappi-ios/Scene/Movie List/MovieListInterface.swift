@@ -22,6 +22,14 @@ enum MoviesCategory: Int, CaseIterable {
         case .upComing: return "Nuevo"
         }
     }
+    
+    func configurator(page: Int) -> MovieConfigurator {
+        switch self {
+        case .topRated: return MovieConfigurator.topRated(page: page)
+        case .popular: return MovieConfigurator.popular(page: page)
+        case .upComing: return MovieConfigurator.upComing(page: page)
+        }
+    }
 }
 
 //MARK: View
@@ -37,8 +45,9 @@ protocol MovieListViewInterface: class {
 
 //MARK: Presenter
 protocol MovieListPresenterInterface: class {
-    var view: MovieListViewInterface! {set get}
-    var interactor: MovieListInteractorInterface! {set get}
+    var router: MovieListRouterInterface! { get }
+    var viewDelegate: MovieListViewInterface! {set get}
+    var interactor: MovieListInteractorInterface! { get }
     
     var currentCategory: MoviesCategory { get }
     
@@ -51,14 +60,13 @@ protocol MovieListPresenterInterface: class {
     func numberOfSections(category: MoviesCategory) -> Int
     func numberOfCell(in section: Int, category: MoviesCategory) -> Int
     func cellConfigurator(at indexPath: IndexPath, category: MoviesCategory) -> CellConfigurator
-    func cellWasTapped(at indexPath: IndexPath, category: MoviesCategory)
+    func cellWasTapped(_ cell: CellTransitionViewProtocol, at indexPath: IndexPath, category: MoviesCategory)
     func filterMovies(_ filter: String)
 }
 
 //MARK: Interactor
 protocol MovieListInteractorInterface: class {
-    var presenter: MovieListPresenterInterface! {set get}
-    
+    var presenterDelegate: MovieListPresenterInterface! {set get}
     func fetchMovie(category: MoviesCategory, page: Int)
 }
 
@@ -67,5 +75,6 @@ protocol MovieListInteractorInterface: class {
 protocol MovieListRouterInterface: class {
     var mainRouter: AppRouter! {set get}
     func buildMovieViewController() -> UIViewController
+    func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: Movie)
 }
 

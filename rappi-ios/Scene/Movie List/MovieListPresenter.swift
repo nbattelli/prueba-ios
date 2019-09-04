@@ -12,8 +12,9 @@ let moviesSection = 0
 let loadingSection = 1
 
 final class MovieListPresenter {
-    weak var view: MovieListViewInterface!
-    var interactor: MovieListInteractorInterface!
+    let router: MovieListRouterInterface!
+    weak var viewDelegate: MovieListViewInterface!
+    let interactor: MovieListInteractorInterface!
     
     var currentCategory: MoviesCategory = MoviesCategory.defaultMoviesCategory
     
@@ -25,13 +26,15 @@ final class MovieListPresenter {
     var filteredModels: [MoviesCategory: Movies] = [:]
     var isFiltering: [MoviesCategory: Bool] = [:]
     
-    init(_ interactor: MovieListInteractorInterface? = MovieListInteractor()) {
+    init(_ router: MovieListRouterInterface, interactor: MovieListInteractorInterface) {
+        self.router = router
         self.interactor = interactor
-        self.interactor.presenter = self
+        self.interactor.presenterDelegate = self
     }
 }
 
 extension MovieListPresenter: MovieListPresenterInterface {
+    
     func viewDidLoad() {
         self.categoryDidChange(MoviesCategory.defaultMoviesCategory)
     }
@@ -46,7 +49,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
         guard var model = self.models[category] else {
             self.models[category] = movies
-            self.view.update()
+            self.viewDelegate.update()
             return
         }
         
@@ -60,9 +63,9 @@ extension MovieListPresenter: MovieListPresenterInterface {
         let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
         
         if model.hasMorePages {
-            self.view.updateMoviesSection(at:indexes, category: category)
+            self.viewDelegate.updateMoviesSection(at:indexes, category: category)
         } else {
-            self.view.updateMoviesSection(at: indexes, removeSection: loadingSection, category: category)
+            self.viewDelegate.updateMoviesSection(at: indexes, removeSection: loadingSection, category: category)
         }
     }
     
@@ -102,8 +105,11 @@ extension MovieListPresenter: MovieListPresenterInterface {
         }
     }
     
-    func cellWasTapped(at indexPath: IndexPath, category: MoviesCategory) {
-        print("\(self.filteredModels[category]!.results[indexPath.row])")
+    func cellWasTapped(_ cell: CellTransitionViewProtocol,
+                       at indexPath: IndexPath,
+                       category: MoviesCategory) {
+        guard let model = self.filteredModels[category]?.results[indexPath.row] else {return}
+        self.router.movieCellWasTapped(cell, model: model)
     }
     
     func filterMovies(_ filter: String) {
@@ -124,7 +130,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
         
         
         
-        self.view.update()
+        self.viewDelegate.update()
     }
 }
 

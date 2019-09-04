@@ -20,6 +20,11 @@
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
 		0FB2A104231710D7007167D9 /* rappi_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A103231710D7007167D9 /* rappi_iosTests.swift */; };
+		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
+		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
+		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
+		0FED7375231F4F0100E171EF /* CellTransitionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7374231F4F0100E171EF /* CellTransitionViewProtocol.swift */; };
+		0FED7377231F584900E171EF /* DetailTransitionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7376231F584900E171EF /* DetailTransitionViewProtocol.swift */; };
 		0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */; };
 		0FFBF7092318B697005CEB0D /* MovieConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF7082318B697005CEB0D /* MovieConfiguration.swift */; };
 		0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBF70B2318B95F005CEB0D /* Movie.swift */; };
@@ -65,6 +70,11 @@
 		0FB2A0FF231710D7007167D9 /* rappi-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rappi-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A103231710D7007167D9 /* rappi_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rappi_iosTests.swift; sourceTree = "<group>"; };
 		0FB2A105231710D7007167D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
+		0FED7374231F4F0100E171EF /* CellTransitionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransitionViewProtocol.swift; sourceTree = "<group>"; };
+		0FED7376231F584900E171EF /* DetailTransitionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransitionViewProtocol.swift; sourceTree = "<group>"; };
 		0FFBF70123177435005CEB0D /* NetworkConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurator.swift; sourceTree = "<group>"; };
 		0FFBF7082318B697005CEB0D /* MovieConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfiguration.swift; sourceTree = "<group>"; };
 		0FFBF70B2318B95F005CEB0D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -117,6 +127,7 @@
 		0F8C363A231761D700FECB82 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0FED736F231E047600E171EF /* Transition */,
 				0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */,
 				0FFBF70F2318C31C005CEB0D /* Protocol */,
 				0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */,
@@ -190,6 +201,25 @@
 			path = "rappi-iosTests";
 			sourceTree = "<group>";
 		};
+		0FED736A231E00A300E171EF /* Movie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0FED736B231E00D500E171EF /* MovieDetailViewController.swift */,
+				0FED736C231E00D500E171EF /* MovieDetailViewController.xib */,
+			);
+			path = "Movie Detail";
+			sourceTree = "<group>";
+		};
+		0FED736F231E047600E171EF /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				0FED7374231F4F0100E171EF /* CellTransitionViewProtocol.swift */,
+				0FED7376231F584900E171EF /* DetailTransitionViewProtocol.swift */,
+				0FED7370231EF03300E171EF /* CellTransition.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		0FFBF7072318B02A005CEB0D /* Connectors */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,12 +248,13 @@
 		0FFBF7122318CF76005CEB0D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				0FFBF71A231A1791005CEB0D /* Movies */,
+				0FFBF71A231A1791005CEB0D /* Movie List */,
+				0FED736A231E00A300E171EF /* Movie Detail */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		0FFBF71A231A1791005CEB0D /* Movies */ = {
+		0FFBF71A231A1791005CEB0D /* Movie List */ = {
 			isa = PBXGroup;
 			children = (
 				0FFBF718231A1785005CEB0D /* MovieListInterface.swift */,
@@ -233,7 +264,7 @@
 				0FFBF71F231A2956005CEB0D /* MovieListRouter.swift */,
 				0FFBF724231A2FFF005CEB0D /* View */,
 			);
-			path = Movies;
+			path = "Movie List";
 			sourceTree = "<group>";
 		};
 		0FFBF721231A2AA9005CEB0D /* App */ = {
@@ -366,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */,
 				0FFBF729231A315F005CEB0D /* MovieListTableViewCell.xib in Resources */,
 				0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */,
 				0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */,
@@ -441,8 +473,10 @@
 			files = (
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
+				0FED7371231EF03300E171EF /* CellTransition.swift in Sources */,
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
+				0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */,
 				0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
@@ -454,10 +488,12 @@
 				0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
+				0FED7375231F4F0100E171EF /* CellTransitionViewProtocol.swift in Sources */,
 				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,
 				0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,
 				0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */,
+				0FED7377231F584900E171EF /* DetailTransitionViewProtocol.swift in Sources */,
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,
 				0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */,
 				0FFBF7092318B697005CEB0D /* MovieConfiguration.swift in Sources */,

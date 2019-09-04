@@ -9,7 +9,7 @@
 import Foundation
 
 final class MovieListInteractor {
-    var presenter: MovieListPresenterInterface!
+    weak var presenterDelegate: MovieListPresenterInterface!
     let movieConnectors: [MoviesCategory: NetworkConnector<MovieConfigurator, Movies>]!
     
     init() {
@@ -27,11 +27,11 @@ private extension MovieListInteractor {
             switch result {
             case .success(let model):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter.movieFetchedSuccess(model, category: category)
+                    self?.presenterDelegate.movieFetchedSuccess(model, category: category)
                 }
             case .failure(let error):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter.movieFetchedFail(error, category: category)
+                    self?.presenterDelegate.movieFetchedFail(error, category: category)
                 }
             }
         }
@@ -41,16 +41,7 @@ private extension MovieListInteractor {
 extension MovieListInteractor: MovieListInteractorInterface {
     func fetchMovie(category: MoviesCategory, page: Int) {
         let connector = self.movieConnectors[category]!
-        var configurator = MovieConfigurator.topRated(page: page)
-        switch category {
-        case .topRated:
-            configurator = MovieConfigurator.topRated(page: page)
-        case .popular:
-            configurator = MovieConfigurator.popular(page: page)
-        case .upComing:
-            configurator = MovieConfigurator.upComing(page: page)
-        }
-        
+        let configurator = category.configurator(page: page)
         self.fetchMovies(connector: connector, configurator: configurator, category: category)
     }
 }

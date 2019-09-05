@@ -23,6 +23,7 @@ final class MovieListPresenter {
             self.filteredModels = models
         }
     }
+    
     var filteredModels: [MoviesCategory: Movies] = [:]
     var isFiltering: [MoviesCategory: Bool] = [:]
     
@@ -37,8 +38,14 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidLoad() {
         if models[self.currentCategory] == nil {
-            self.interactor.fetchMovie(category: self.currentCategory, page: 1)
+            self.refreshCurrentCategory()
         }
+    }
+    
+    func refreshCurrentCategory() {
+        self.interactor.fetchMovie(category: self.currentCategory, page: 1)
+        
+        self.models.removeValue(forKey: self.currentCategory)
     }
     
     func categoryDidChange(_ category: MoviesCategory) {
@@ -103,7 +110,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
                                                         posterPath: movie.posterPath)
             return TableCellConfigurator<MovieListTableViewCell, MovieListCellViewModel>(item: viewModel)
         } else {
-            self.interactor.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 0)
+            self.interactor.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 1)
             return TableCellConfigurator<LoadingTableViewCell, String>(item: "Cargando")
         }
     }

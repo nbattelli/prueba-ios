@@ -33,10 +33,7 @@ final class MovieListViewController: UIViewController {
     @IBOutlet weak var containerTableView: UIStackView!
     
     var tableViews: [MoviesCategory: UITableView]
-    
-    var currentTableView: UITableView {
-        return self.tableViews[self.presenter.currentCategory]!
-    }
+    var refreshControls: [MoviesCategory: UIRefreshControl] = [:]
     
     var presenter: MovieListPresenterInterface!
     
@@ -56,6 +53,7 @@ final class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Peliculas"
+        self.view.backgroundColor = UIColor.primaryColor
         self.configureTableView()
         self.presenter.viewDidLoad()
     }
@@ -86,13 +84,20 @@ final class MovieListViewController: UIViewController {
             tableView.register(nib, forCellReuseIdentifier: nibName)
         }
         
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-        searchBar.tintColor = UIColor.secondaryColor
-        searchBar.barTintColor = UIColor.primaryColor
-        searchBar.returnKeyType = .done
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        tableView.tableHeaderView = searchBar
+        let header = SearchBarHeaderView.buildView()
+        header.searchBar.delegate = self
+        tableView.tableHeaderView = header
+
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(sender:)), for: .valueChanged)
+        let category = self.getCategory(for: tableView)!
+        self.refreshControls[category] = refreshControl
+
+    }
+    
+    @objc func refreshWeatherData(sender: UIRefreshControl) {
+        self.presenter.refreshCurrentCategory()
     }
     
     func getCategory(for tableView: UITableView) -> MoviesCategory? {
@@ -105,6 +110,7 @@ final class MovieListViewController: UIViewController {
 extension MovieListViewController: MovieListViewInterface {
     func update(category: MoviesCategory) {
         self.tableViews[category]?.reloadData()
+        self.refreshControls[category]?.endRefreshing()
     }
     
     func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory) {

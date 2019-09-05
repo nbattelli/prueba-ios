@@ -32,6 +32,7 @@ enum MoviesCategory: Int, CaseIterable {
     }
 }
 
+
 //MARK: View
 protocol MovieListViewInterface: class {
     func update(category: MoviesCategory)
@@ -52,6 +53,7 @@ protocol MovieListPresenterInterface: class {
     var currentCategory: MoviesCategory { get }
     
     func viewDidLoad()
+    func refreshCurrentCategory()
     func categoryDidChange(_ category: MoviesCategory)
     
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)

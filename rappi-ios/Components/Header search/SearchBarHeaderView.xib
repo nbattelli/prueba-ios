@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchBarHeaderView" customModule="rappi_ios" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ICA-5R-7iu" customClass="SearchBarHeaderView" customModule="rappi_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <searchBar clipsSubviews="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-aI-F54">
+                    <rect key="frame" x="16" y="16" width="343" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="L65-Jk-rRY"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="f9T-Hl-fjk" firstAttribute="trailing" secondItem="o1y-aI-F54" secondAttribute="trailing" constant="16" id="8uQ-M8-99h"/>
+                <constraint firstAttribute="bottom" secondItem="o1y-aI-F54" secondAttribute="bottom" id="Qf4-uM-uZX"/>
+                <constraint firstItem="o1y-aI-F54" firstAttribute="leading" secondItem="f9T-Hl-fjk" secondAttribute="leading" constant="16" id="jLA-ae-aVC"/>
+                <constraint firstItem="o1y-aI-F54" firstAttribute="top" secondItem="f9T-Hl-fjk" secondAttribute="top" constant="16" id="rQ4-8I-J5s"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="f9T-Hl-fjk"/>
+            <connections>
+                <outlet property="searchBar" destination="o1y-aI-F54" id="eYv-Ml-o1K"/>
+            </connections>
+            <point key="canvasLocation" x="142" y="17"/>
+        </view>
+    </objects>
+</document>

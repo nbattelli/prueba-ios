@@ -25,6 +25,8 @@
 		0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D412320982600161018 /* MovieDetailPresenter.swift */; };
 		0FE03D442320991600161018 /* MovieDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D432320991600161018 /* MovieDetailInteractor.swift */; };
 		0FE03D4623209C3E00161018 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */; };
+		0FE03D4A2320C87600161018 /* SearchBarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D482320C87600161018 /* SearchBarHeaderView.swift */; };
+		0FE03D4B2320C87600161018 /* SearchBarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D492320C87600161018 /* SearchBarHeaderView.xib */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -80,6 +82,8 @@
 		0FE03D412320982600161018 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		0FE03D432320991600161018 /* MovieDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInteractor.swift; sourceTree = "<group>"; };
 		0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
+		0FE03D482320C87600161018 /* SearchBarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarHeaderView.swift; sourceTree = "<group>"; };
+		0FE03D492320C87600161018 /* SearchBarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarHeaderView.xib; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -211,6 +215,15 @@
 			path = "rappi-iosTests";
 			sourceTree = "<group>";
 		};
+		0FE03D472320C81000161018 /* Header search */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D482320C87600161018 /* SearchBarHeaderView.swift */,
+				0FE03D492320C87600161018 /* SearchBarHeaderView.xib */,
+			);
+			path = "Header search";
+			sourceTree = "<group>";
+		};
 		0FED736A231E00A300E171EF /* Movie Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +327,7 @@
 		0FFBF72C231AECCC005CEB0D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D472320C81000161018 /* Header search */,
 				0F9CFA00231B75C900322DAB /* Loading Cell */,
 				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
 				0FFBF72F231B0B0A005CEB0D /* TabBar.swift */,
@@ -417,6 +431,7 @@
 				0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */,
 				0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */,
 				0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */,
+				0FE03D4B2320C87600161018 /* SearchBarHeaderView.xib in Resources */,
 				0FFBF723231A2FE2005CEB0D /* MovieListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +505,7 @@
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
 				0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */,
 				0FED7371231EF03300E171EF /* CellTransition.swift in Sources */,
+				0FE03D4A2320C87600161018 /* SearchBarHeaderView.swift in Sources */,
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
 				0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */,

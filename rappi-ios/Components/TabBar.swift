@@ -21,7 +21,7 @@ final class TabBar: MDCTabBar {
         self.inkColor = UIColor.secondaryLightColor.withAlphaComponent(0.2)
         self.alignment = .justified
         self.itemAppearance = .titles
-        self.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.sizeToFit()
     }
     

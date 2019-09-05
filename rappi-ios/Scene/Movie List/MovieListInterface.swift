@@ -9,7 +9,7 @@
 import UIKit
 
 enum MoviesCategory: Int, CaseIterable {
-    case topRated, popular, upComing, lucas
+    case topRated, popular, upComing
     
     static var defaultMoviesCategory: MoviesCategory {
         return MoviesCategory.allCases.first!
@@ -20,7 +20,6 @@ enum MoviesCategory: Int, CaseIterable {
         case .topRated: return "Top"
         case .popular: return "Popular"
         case .upComing: return "Nuevo"
-        case .lucas : return "Lucas"
         }
     }
     
@@ -29,14 +28,13 @@ enum MoviesCategory: Int, CaseIterable {
         case .topRated: return MovieConfigurator.topRated(page: page)
         case .popular: return MovieConfigurator.popular(page: page)
         case .upComing: return MovieConfigurator.upComing(page: page)
-        case .lucas: return MovieConfigurator.topRated(page: page)
         }
     }
 }
 
 //MARK: View
 protocol MovieListViewInterface: class {
-    func update()
+    func update(category: MoviesCategory)
     func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory)
     func updateMoviesSection(at indexPaths:[IndexPath], removeSection: Int, category: MoviesCategory)
     func showError(_ error: String)

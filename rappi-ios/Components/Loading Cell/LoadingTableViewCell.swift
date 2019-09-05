@@ -9,8 +9,19 @@
 import UIKit
 
 final class LoadingTableViewCell: UITableViewCell, ConfigurableCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    {
+        didSet {
+            activity.color = UIColor.secondaryLightColor
+        }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = UIColor.primaryDarkColor
+    }
     
     override func prepareForReuse() {
         self.titleLabel.text = nil

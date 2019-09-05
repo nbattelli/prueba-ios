@@ -13,18 +13,23 @@ final class MovieListViewController: UIViewController {
     
     var originalFrame:CGRect!
     var image: UIImage!
+    var materialTabBar: TabBar!
     
     @IBOutlet weak var tabBar: UIView! {
         didSet {
-            let tabBar = TabBar(frame: self.tabBar.bounds, delegate: self)
-            self.tabBar.addSubview(tabBar)
+            self.materialTabBar = TabBar(frame: self.tabBar.bounds, delegate: self)
+            self.tabBar.addSubview(materialTabBar)
             let allCategories = MoviesCategory.allCases.sorted { $0.rawValue < $1.rawValue }
-            tabBar.items = allCategories.enumerated().map {
+            materialTabBar.items = allCategories.enumerated().map {
                 UITabBarItem(title: $1.description, image: nil, tag: $0)
             }
         }
     }
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
+        }
+    }
     @IBOutlet weak var containerTableView: UIStackView!
     
     var tableViews: [MoviesCategory: UITableView]
@@ -98,8 +103,8 @@ final class MovieListViewController: UIViewController {
 }
 
 extension MovieListViewController: MovieListViewInterface {
-    func update() {
-        self.currentTableView.reloadData()
+    func update(category: MoviesCategory) {
+        self.tableViews[category]?.reloadData()
     }
     
     func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory) {
@@ -161,8 +166,6 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
 extension MovieListViewController: MDCTabBarDelegate {
     func tabBar(_ tabBar: MDCTabBar, willSelect item: UITabBarItem) {
         let index = tabBar.items.firstIndex(of: item) ?? 0
-        let category = MoviesCategory(rawValue: index) ?? MoviesCategory.defaultMoviesCategory
-        self.presenter.categoryDidChange(category)
         
         let screenWidth = self.view.frame.size.width
         let rectToScroll = CGRect(x: screenWidth * CGFloat(index), y: 0, width: screenWidth, height: 1)
@@ -186,7 +189,23 @@ extension MovieListViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.resignFirstResponder()
+        self.presenter.filterMovies("")
+    }
+}
+
+extension MovieListViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == self.scrollView else {return}
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        
+        let index = Int(pageNumber)
+        let item = self.materialTabBar.items[index]
+        self.materialTabBar.setSelectedItem(item, animated: true)
+        
+        let category = MoviesCategory(rawValue: index) ?? MoviesCategory.defaultMoviesCategory
+        self.presenter.categoryDidChange(category)
     }
 }

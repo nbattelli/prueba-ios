@@ -17,6 +17,7 @@ final class MovieDetailViewController: UIViewController {
         }
     }
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overview: UILabel!
     
     var presenter: MovieDetailPresenterInterface!
     
@@ -46,6 +47,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
             let url = "https://image.tmdb.org/t/p/w500\(path)"
             self.posterBackgroundImageView.load(url: url)
         }
+        self.overview.text = previewMovie.overview
     }
     
     func update(movie: BaseMovieProtocol) {

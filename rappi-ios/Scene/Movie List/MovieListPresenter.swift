@@ -36,10 +36,13 @@ final class MovieListPresenter {
 extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidLoad() {
-        self.categoryDidChange(MoviesCategory.defaultMoviesCategory)
+        if models[self.currentCategory] == nil {
+            self.interactor.fetchMovie(category: self.currentCategory, page: 1)
+        }
     }
     
     func categoryDidChange(_ category: MoviesCategory) {
+        guard self.currentCategory != category else {return}
         self.currentCategory = category
         if models[category] == nil {
             self.interactor.fetchMovie(category: category, page: 1)
@@ -49,7 +52,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
         guard var model = self.models[category] else {
             self.models[category] = movies
-            self.viewDelegate.update()
+            self.viewDelegate.update(category: category)
             return
         }
         
@@ -130,7 +133,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
         
         
         
-        self.viewDelegate.update()
+        self.viewDelegate.update(category: self.currentCategory)
     }
 }
 

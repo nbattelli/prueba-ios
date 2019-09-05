@@ -12,6 +12,7 @@ protocol BaseMovieProtocol {
     var id: Int { get }
     var title: String { get }
     var posterPath: String? { get }
+    var backdropPath: String? { get }
     var overview: String? { get }
     var voteAvarage: Double? { get }
 }

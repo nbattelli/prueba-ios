@@ -9,7 +9,6 @@
 import UIKit
 
 final class MovieListRouter: NSObject {
-    var mainRouter: AppRouter!
     var navigationController: UINavigationController!
     
     var cellTransitionView: CellTransitionViewProtocol?
@@ -17,6 +16,7 @@ final class MovieListRouter: NSObject {
 }
 
 extension MovieListRouter: MovieListRouterInterface {
+
     func buildMovieViewController() -> UIViewController {
         let interactor = MovieListInteractor()
         let presenter = MovieListPresenter(self, interactor: interactor)
@@ -29,8 +29,10 @@ extension MovieListRouter: MovieListRouterInterface {
     }
     
     func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: Movie) {
-        let vc = MovieDetailViewController()
+        let detailRouter = MovieDetailRouter()
+        detailRouter.parentRouter = self
         
+        let vc: MovieDetailViewController = detailRouter.buildMovieDetailViewController(movie: model)
         self.cellTransitionView = cell
         self.detailTransitionView = vc
         self.navigationController?.pushViewController(vc, animated: true)

@@ -97,7 +97,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
 
             let viewModel = MovieListCellViewModel.init(title: movie.title,
                                                         movieDescription: movie.overview,
-                                                        imagePath: movie.posterPath)
+                                                        posterPath: movie.posterPath)
             return TableCellConfigurator<MovieListTableViewCell, MovieListCellViewModel>(item: viewModel)
         } else {
             self.interactor.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 0)

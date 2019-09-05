@@ -12,6 +12,7 @@ enum MovieConfigurator {
     case topRated(page:Int)
     case popular(page:Int)
     case upComing(page:Int)
+    case detail(id:String)
 }
 
 extension MovieConfigurator: NetworkConfiguration {
@@ -23,17 +24,19 @@ extension MovieConfigurator: NetworkConfiguration {
             return "movie/popular"
         case .upComing:
             return "movie/upcoming"
+        case .detail(let id):
+            return "movie/\(id)"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .topRated, .popular, .upComing:
+        case .topRated, .popular, .upComing, .detail:
             return .get
         }
     }
     
-    var aditionalHeaders: HTTPHeaders? {
+    var additionalHeaders: HTTPHeaders? {
         return nil
     }
     
@@ -45,6 +48,8 @@ extension MovieConfigurator: NetworkConfiguration {
             return ["page": page]
         case .upComing(let page):
             return ["page": page]
+        case .detail:
+            return nil
         }
     }
 }

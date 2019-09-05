@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie: Decodable {
+struct Movie: Decodable, BaseMovieProtocol {
     let id: Int
     let title: String
     let overview: String?
@@ -33,7 +33,7 @@ struct Movie: Decodable {
         case hasVideo = "video"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
-        case adult = "adult"
+        case adult
         case originalTitle = "original_title"
         case genres = "genre_ids"
         case releaseDate = "release_date"

@@ -51,6 +51,7 @@ final class CellTransition: NSObject, UIViewControllerAnimatedTransitioning {
         transitionImageView.image = cellImage
         
         container.addSubview(transitionImageView)
+        container.layer.cornerRadius = 8
         
         toView.frame = isPresenting ?  CGRect(x: fromView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height) : toView.frame
         toView.alpha = isPresenting ? 0 : 1

@@ -11,5 +11,5 @@ import Foundation
 struct MovieListCellViewModel {
     var title: String?
     var movieDescription: String?
-    var imagePath: String?
+    var posterPath: String?
 }

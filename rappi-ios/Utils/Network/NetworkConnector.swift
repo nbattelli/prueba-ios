@@ -91,7 +91,7 @@ extension NetworkConnector {
         request.httpMethod = configuration.httpMethod.rawValue
         
         self.addQueryParameters(configuration.queryParameters, request: &request)
-        self.addHeaders(configuration.aditionalHeaders, request: &request)
+        self.addHeaders(configuration.additionalHeaders, request: &request)
         return request
     }
     

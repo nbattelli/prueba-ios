@@ -20,6 +20,11 @@
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
 		0FB2A104231710D7007167D9 /* rappi_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A103231710D7007167D9 /* rappi_iosTests.swift */; };
+		0FE03D3E232091F900161018 /* MovieDetailInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D3D232091F900161018 /* MovieDetailInterface.swift */; };
+		0FE03D402320940F00161018 /* BaseMovieProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */; };
+		0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D412320982600161018 /* MovieDetailPresenter.swift */; };
+		0FE03D442320991600161018 /* MovieDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D432320991600161018 /* MovieDetailInteractor.swift */; };
+		0FE03D4623209C3E00161018 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -70,6 +75,11 @@
 		0FB2A0FF231710D7007167D9 /* rappi-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rappi-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A103231710D7007167D9 /* rappi_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rappi_iosTests.swift; sourceTree = "<group>"; };
 		0FB2A105231710D7007167D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FE03D3D232091F900161018 /* MovieDetailInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInterface.swift; sourceTree = "<group>"; };
+		0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMovieProtocol.swift; sourceTree = "<group>"; };
+		0FE03D412320982600161018 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
+		0FE03D432320991600161018 /* MovieDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInteractor.swift; sourceTree = "<group>"; };
+		0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -204,7 +214,11 @@
 		0FED736A231E00A300E171EF /* Movie Detail */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D3D232091F900161018 /* MovieDetailInterface.swift */,
 				0FED736B231E00D500E171EF /* MovieDetailViewController.swift */,
+				0FE03D412320982600161018 /* MovieDetailPresenter.swift */,
+				0FE03D432320991600161018 /* MovieDetailInteractor.swift */,
+				0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */,
 				0FED736C231E00D500E171EF /* MovieDetailViewController.xib */,
 			);
 			path = "Movie Detail";
@@ -231,6 +245,7 @@
 		0FFBF70A2318B954005CEB0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */,
 				0FFBF70D2318C2CD005CEB0D /* Movies.swift */,
 				0FFBF70B2318B95F005CEB0D /* Movie.swift */,
 			);
@@ -473,21 +488,26 @@
 			files = (
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
+				0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */,
 				0FED7371231EF03300E171EF /* CellTransition.swift in Sources */,
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
 				0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */,
 				0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */,
+				0FE03D402320940F00161018 /* BaseMovieProtocol.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
+				0FE03D4623209C3E00161018 /* MovieDetailRouter.swift in Sources */,
 				0F9CFA08231C0C6A00322DAB /* UIColor+Palette.swift in Sources */,
 				0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */,
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
 				0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */,
 				0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */,
+				0FE03D3E232091F900161018 /* MovieDetailInterface.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
 				0FFBF70223177435005CEB0D /* NetworkConfigurator.swift in Sources */,
+				0FE03D442320991600161018 /* MovieDetailInteractor.swift in Sources */,
 				0FED7375231F4F0100E171EF /* CellTransitionViewProtocol.swift in Sources */,
 				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,
 				0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */,

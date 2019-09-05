@@ -22,7 +22,7 @@ enum HttpMethod: String {
 protocol NetworkConfiguration {
     var path: String {get}
     var httpMethod: HttpMethod { get }
-    var aditionalHeaders: HTTPHeaders? { get }
+    var additionalHeaders: HTTPHeaders? { get }
     var queryParameters: QueryParameters? { get }
 }
 

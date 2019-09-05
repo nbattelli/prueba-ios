@@ -40,7 +40,7 @@ protocol MovieListViewInterface: class {
     func updateMoviesSection(at indexPaths:[IndexPath], removeSection: Int, category: MoviesCategory)
     func showError(_ error: String)
     func hideError()
-    func showLoading(message: String)
+    func showLoading()
     func hideLoading()
 }
 

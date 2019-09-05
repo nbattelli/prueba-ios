@@ -8,6 +8,7 @@ use_frameworks!
 target 'rappi-ios' do
   pod 'MaterialComponents/Ink'
   pod 'MaterialComponents/Tabs'
+  pod 'MaterialComponents/ActivityIndicator'
   pod 'MaterialComponents/BottomNavigation'
   pod 'SDWebImage'
 end

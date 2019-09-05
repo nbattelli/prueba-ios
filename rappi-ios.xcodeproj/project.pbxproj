@@ -27,6 +27,7 @@
 		0FE03D4623209C3E00161018 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */; };
 		0FE03D4A2320C87600161018 /* SearchBarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D482320C87600161018 /* SearchBarHeaderView.swift */; };
 		0FE03D4B2320C87600161018 /* SearchBarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D492320C87600161018 /* SearchBarHeaderView.xib */; };
+		0FE03D5023214BEC00161018 /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D4F23214BEC00161018 /* UIView+Loading.swift */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -84,6 +85,7 @@
 		0FE03D4523209C3E00161018 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
 		0FE03D482320C87600161018 /* SearchBarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarHeaderView.swift; sourceTree = "<group>"; };
 		0FE03D492320C87600161018 /* SearchBarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarHeaderView.xib; sourceTree = "<group>"; };
+		0FE03D4F23214BEC00161018 /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */,
 				0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */,
 				0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */,
+				0FE03D4F23214BEC00161018 /* UIView+Loading.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -456,7 +459,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-rappi-ios/Pods-rappi-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -464,7 +470,10 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +542,7 @@
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,
 				0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */,
 				0FFBF7092318B697005CEB0D /* MovieConfiguration.swift in Sources */,
+				0FE03D5023214BEC00161018 /* UIView+Loading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

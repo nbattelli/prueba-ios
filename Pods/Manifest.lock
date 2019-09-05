@@ -1,6 +1,11 @@
 PODS:
-  - MaterialComponents/AnimationTiming (88.1.0)
-  - MaterialComponents/BottomNavigation (88.1.0):
+  - MaterialComponents/ActivityIndicator (88.2.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
+  - MaterialComponents/AnimationTiming (88.2.0)
+  - MaterialComponents/BottomNavigation (88.2.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/Palettes
@@ -10,24 +15,56 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Elevation (88.1.0):
+  - MaterialComponents/Buttons (88.2.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Elevation (88.2.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (88.1.0):
+  - MaterialComponents/Ink (88.2.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (88.1.0)
-  - MaterialComponents/private/Application (88.1.0)
-  - MaterialComponents/private/Color (88.1.0)
-  - MaterialComponents/private/Math (88.1.0)
-  - MaterialComponents/Ripple (88.1.0):
+  - MaterialComponents/OverlayWindow (88.2.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/Palettes (88.2.0)
+  - MaterialComponents/private/Application (88.2.0)
+  - MaterialComponents/private/Color (88.2.0)
+  - MaterialComponents/private/KeyboardWatcher (88.2.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (88.2.0)
+  - MaterialComponents/private/Overlay (88.2.0)
+  - MaterialComponents/Ripple (88.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (88.1.0)
-  - MaterialComponents/ShadowLayer (88.1.0):
+  - MaterialComponents/ShadowElevations (88.2.0)
+  - MaterialComponents/ShadowLayer (88.2.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Tabs (88.1.0):
+  - MaterialComponents/Shapes (88.2.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Snackbar (88.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/Tabs (88.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
@@ -38,17 +75,23 @@ PODS:
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Typography (88.1.0):
+  - MaterialComponents/Typography (88.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
 
 DEPENDENCIES:
+  - MaterialComponents/ActivityIndicator
   - MaterialComponents/BottomNavigation
   - MaterialComponents/Ink
+  - MaterialComponents/Snackbar
   - MaterialComponents/Tabs
   - SDWebImage
 
@@ -56,13 +99,19 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MaterialComponents
     - MDFInternationalization
+    - MDFTextAccessibility
+    - MotionAnimator
+    - MotionInterchange
     - SDWebImage
 
 SPEC CHECKSUMS:
-  MaterialComponents: 54dfcfccc45439a158f9d3ad8bc0e39972f91db4
+  MaterialComponents: 9c32944d05360aa1e096c3c6058c4c0f784a7bbe
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: 536696ba6d0af23dc7f9f6d41feec35fcbccd681
+PODFILE CHECKSUM: 3e9924e7fc2da41a4b9eb4b028635a3d1fa22a12
 
 COCOAPODS: 1.6.1

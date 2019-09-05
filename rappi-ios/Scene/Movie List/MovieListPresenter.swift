@@ -32,6 +32,11 @@ final class MovieListPresenter {
         self.interactor = interactor
         self.interactor.presenterDelegate = self
     }
+    
+    private func fetchMovie(category: MoviesCategory, page: Int) {
+        self.viewDelegate.showLoading()
+        self.interactor.fetchMovie(category: self.currentCategory, page: 1)
+    }
 }
 
 extension MovieListPresenter: MovieListPresenterInterface {
@@ -43,8 +48,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
     }
     
     func refreshCurrentCategory() {
-        self.interactor.fetchMovie(category: self.currentCategory, page: 1)
-        
+        self.fetchMovie(category: self.currentCategory, page: 1)
         self.models.removeValue(forKey: self.currentCategory)
     }
     
@@ -52,7 +56,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
         guard self.currentCategory != category else {return}
         self.currentCategory = category
         if models[category] == nil {
-            self.interactor.fetchMovie(category: category, page: 1)
+            self.fetchMovie(category: category, page: 1)
         }
     }
     
@@ -110,7 +114,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
                                                         posterPath: movie.posterPath)
             return TableCellConfigurator<MovieListTableViewCell, MovieListCellViewModel>(item: viewModel)
         } else {
-            self.interactor.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 1)
+            self.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 1)
             return TableCellConfigurator<LoadingTableViewCell, String>(item: "Cargando")
         }
     }

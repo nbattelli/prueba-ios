@@ -136,12 +136,12 @@ extension MovieListViewController: MovieListViewInterface {
         print("hide error")
     }
     
-    func showLoading(message: String) {
-        print("show loading \(message)")
+    func showLoading() {
+        self.scrollView.showAsLoading()
     }
     
     func hideLoading() {
-        print("hide loading")
+        self.scrollView.stopLoading()
     }
 }
 

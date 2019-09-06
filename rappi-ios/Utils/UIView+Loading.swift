@@ -40,6 +40,8 @@ extension UIView {
         
         activityIndicator.startAnimating()
         
+        self.loadingView = view
+        
         self.addSubview(view)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Reachability
 
 final class MovieListInteractor {
     weak var presenterDelegate: MovieListPresenterInterface!
@@ -40,8 +41,13 @@ private extension MovieListInteractor {
 
 extension MovieListInteractor: MovieListInteractorInterface {
     func fetchMovie(category: MoviesCategory, page: Int) {
-        let connector = self.movieConnectors[category]!
-        let configurator = category.configurator(page: page)
-        self.fetchMovies(connector: connector, configurator: configurator, category: category)
+        if case Reachability()!.connection = Reachability.Connection.none {
+            let movies = MovieRepository.getMoviesFromDisk(category: category)
+            self.presenterDelegate.movieFetchedSuccess(Movies(movies: movies), category: category)
+        } else {
+            let connector = self.movieConnectors[category]!
+            let configurator = category.configurator(page: page)
+            self.fetchMovies(connector: connector, configurator: configurator, category: category)
+        }
     }
 }

@@ -34,8 +34,10 @@ final class MovieListPresenter {
     }
     
     private func fetchMovie(category: MoviesCategory, page: Int) {
-        self.viewDelegate.showLoading()
-        self.interactor.fetchMovie(category: self.currentCategory, page: 1)
+        if self.models[category]?.results.count ?? 0 == 0 {
+            self.viewDelegate.showLoading()
+        }
+        self.interactor.fetchMovie(category: self.currentCategory, page: page)
     }
 }
 
@@ -43,13 +45,12 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidLoad() {
         if models[self.currentCategory] == nil {
-            self.refreshCurrentCategory()
+            self.reloadCurrentCategory()
         }
     }
     
-    func refreshCurrentCategory() {
+    func reloadCurrentCategory() {
         self.fetchMovie(category: self.currentCategory, page: 1)
-        self.models.removeValue(forKey: self.currentCategory)
     }
     
     func categoryDidChange(_ category: MoviesCategory) {
@@ -61,25 +62,32 @@ extension MovieListPresenter: MovieListPresenterInterface {
     }
     
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
-        guard var model = self.models[category] else {
-            self.models[category] = movies
-            self.viewDelegate.update(category: category)
-            return
-        }
+        self.viewDelegate.hideLoading()
         
         let newMoviews = movies.results
-        model.results.append(contentsOf: newMoviews)
-        model.currentPage = movies.currentPage
-        self.models[category] = model
-        
-        let startIndex = model.results.count - newMoviews.count
-        let endIndex = startIndex + newMoviews.count
-        let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-        
-        if model.hasMorePages {
-            self.viewDelegate.updateMoviesSection(at:indexes, category: category)
+        if self.models[category] == nil || movies.currentPage == 1 {
+            self.models[category] = movies
         } else {
-            self.viewDelegate.updateMoviesSection(at: indexes, removeSection: loadingSection, category: category)
+            self.models[category]?.results.append(contentsOf: newMoviews)
+        }
+        
+        MovieRepository.saveMoviesToDisk(category: category,
+                                         movies: self.models[category]?.results)
+        
+        self.models[category]?.currentPage = movies.currentPage
+        
+        let startIndex = self.models[category]!.results.count - newMoviews.count
+        if startIndex > 0 {
+            let endIndex = startIndex + newMoviews.count
+            let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+            
+            if self.models[category]?.hasMorePages ?? false {
+                self.viewDelegate.updateMoviesSection(at:indexes, category: category)
+            } else {
+                self.viewDelegate.updateMoviesSection(at: indexes, removeSection: loadingSection, category: category)
+            }
+        } else {
+            self.viewDelegate.update(category: category)
         }
     }
     
@@ -108,7 +116,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
     func cellConfigurator(at indexPath: IndexPath, category: MoviesCategory) -> CellConfigurator {
         if indexPath.section == 0,
             let movie = self.filteredModels[category]?.results[indexPath.row] {
-
+            
             let viewModel = MovieListCellViewModel.init(title: movie.title,
                                                         movieDescription: movie.overview,
                                                         posterPath: movie.posterPath)
@@ -147,4 +155,5 @@ extension MovieListPresenter: MovieListPresenterInterface {
         self.viewDelegate.update(category: self.currentCategory)
     }
 }
+
 

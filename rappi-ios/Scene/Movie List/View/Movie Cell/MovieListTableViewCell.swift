@@ -56,7 +56,7 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.movieDescription
         if let path = model.posterPath {
-            let url = "https://image.tmdb.org/t/p/w500\(path)"
+            let url = "https://image.tmdb.org/t/p/w200\(path)"
             self.movieImageView.load(url: url)
         }
     }

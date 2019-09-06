@@ -58,7 +58,7 @@ final class MovieListViewController: UIViewController {
         self.presenter.viewDidLoad()
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         let tableViews = self.tableViews.sorted {$0.key.rawValue < $1.key.rawValue}.map{$1}
         tableViews.enumerated().forEach { (index, tableView) in
             self.setupTableView(tableView)
@@ -69,12 +69,13 @@ final class MovieListViewController: UIViewController {
         }
     }
     
-    func setupTableView(_ tableView: UITableView) {
+    private func setupTableView(_ tableView: UITableView) {
         tableView.backgroundColor = UIColor.primaryDarkColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 136
         tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         
         let registerCells = [MovieListTableViewCell.self, LoadingTableViewCell.self]
         
@@ -90,17 +91,17 @@ final class MovieListViewController: UIViewController {
 
         let refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData(sender:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
         let category = self.getCategory(for: tableView)!
         self.refreshControls[category] = refreshControl
 
     }
     
-    @objc func refreshWeatherData(sender: UIRefreshControl) {
-        self.presenter.refreshCurrentCategory()
+    @objc private func refreshData(sender: UIRefreshControl) {
+        self.presenter.reloadCurrentCategory()
     }
     
-    func getCategory(for tableView: UITableView) -> MoviesCategory? {
+    private func getCategory(for tableView: UITableView) -> MoviesCategory? {
         return self.tableViews.first(where: { (key, value) in
             return value == tableView
         })?.key
@@ -137,11 +138,11 @@ extension MovieListViewController: MovieListViewInterface {
     }
     
     func showLoading() {
-        self.scrollView.showAsLoading()
+        self.tableViews[self.presenter.currentCategory]?.showAsLoading()
     }
     
     func hideLoading() {
-        self.scrollView.stopLoading()
+        self.tableViews[self.presenter.currentCategory]?.stopLoading()
     }
 }
 
@@ -214,4 +215,5 @@ extension MovieListViewController: UIScrollViewDelegate {
         let category = MoviesCategory(rawValue: index) ?? MoviesCategory.defaultMoviesCategory
         self.presenter.categoryDidChange(category)
     }
+    
 }

@@ -14,6 +14,12 @@ struct Movies: Decodable, Paginable {
     var currentPage: Int
     var totalPages: Int
     
+    init(movies: [Movie]) {
+        self.results = movies
+        self.currentPage = 1
+        self.totalPages = 1
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case results
         case currentPage = "page"

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie: Decodable, BaseMovieProtocol {
+struct Movie: Codable, BaseMovieProtocol {
     let id: Int
     let title: String
     let overview: String?
@@ -20,7 +20,6 @@ struct Movie: Decodable, BaseMovieProtocol {
     let backdropPath: String?
     let adult: Bool?
     let originalTitle: String?
-    let genres: [Int]?
     let releaseDate: String?
     
     private enum CodingKeys: String, CodingKey {
@@ -33,9 +32,8 @@ struct Movie: Decodable, BaseMovieProtocol {
         case hasVideo = "video"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
-        case adult
+        case adult = "adult"
         case originalTitle = "original_title"
-        case genres = "genre_ids"
         case releaseDate = "release_date"
     }
 }

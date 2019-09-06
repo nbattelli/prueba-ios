@@ -30,6 +30,14 @@ enum MoviesCategory: Int, CaseIterable {
         case .upComing: return MovieConfigurator.upComing(page: page)
         }
     }
+    
+    func fileName() -> String {
+        switch self {
+        case .topRated: return "movie-top-rated.json"
+        case .popular: return "movie-popular.json"
+        case .upComing: return "movie-nuevo.json"
+        }
+    }
 }
 
 
@@ -53,7 +61,7 @@ protocol MovieListPresenterInterface: class {
     var currentCategory: MoviesCategory { get }
     
     func viewDidLoad()
-    func refreshCurrentCategory()
+    func reloadCurrentCategory()
     func categoryDidChange(_ category: MoviesCategory)
     
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)

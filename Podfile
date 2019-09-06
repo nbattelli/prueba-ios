@@ -11,5 +11,6 @@ target 'rappi-ios' do
   pod 'MaterialComponents/ActivityIndicator'
   pod 'MaterialComponents/BottomNavigation'
   pod 'SDWebImage'
+  pod 'ReachabilitySwift'
 end
 

@@ -120,14 +120,14 @@ extension MovieListViewController: MovieListViewInterface {
     
     func showError(_ error: String, buttonTitle: String, actionBlock:(()->Void)?) {
         self.errorView.configure(error: error, buttonTitle: buttonTitle, actionBlock: actionBlock)
-        self.bottomErrorViewLayour.constant = 16
+        self.bottomErrorViewLayour.constant = -40
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
     
     func hideError() {
-        self.bottomErrorViewLayour.constant = -(self.view.safeAreaInsets.bottom + self.errorView.frame.height)
+        self.bottomErrorViewLayour.constant = 40
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

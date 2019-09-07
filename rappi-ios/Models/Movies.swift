@@ -13,11 +13,13 @@ struct Movies: Decodable, Paginable {
     var results: [Movie]
     var currentPage: Int
     var totalPages: Int
+    var cached: Bool?
     
-    init(movies: [Movie]) {
+    init(movies: [Movie], cached: Bool? = false) {
         self.results = movies
         self.currentPage = 1
         self.totalPages = 1
+        self.cached = cached ?? false
     }
     
     private enum CodingKeys: String, CodingKey {

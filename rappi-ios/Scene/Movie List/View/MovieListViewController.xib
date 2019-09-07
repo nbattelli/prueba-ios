@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="rappi_ios" customModuleProvider="target">
             <connections>
-                <outlet property="bottomErrorViewLayour" destination="hCC-GX-mcd" id="D8u-NP-Lym"/>
+                <outlet property="bottomErrorViewLayour" destination="qfv-fn-yTv" id="1Xf-eb-2l3"/>
                 <outlet property="containerTableView" destination="WbI-Vn-LAW" id="ovT-p7-hEj"/>
                 <outlet property="errorView" destination="odQ-Or-57i" id="fa4-OG-VDR"/>
                 <outlet property="scrollView" destination="thD-Uu-5kM" id="DOO-Iz-w6A"/>
@@ -49,7 +49,7 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="odQ-Or-57i" customClass="BannerView" customModule="rappi_ios" customModuleProvider="target">
-                    <rect key="frame" x="8" y="727" width="359" height="40"/>
+                    <rect key="frame" x="8" y="707" width="359" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -62,9 +62,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="odQ-Or-57i" secondAttribute="trailing" constant="8" id="GXu-t2-RVQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oQh-KB-asl" secondAttribute="trailing" constant="16" id="LMG-lG-IQt"/>
                 <constraint firstItem="thD-Uu-5kM" firstAttribute="top" secondItem="oQh-KB-asl" secondAttribute="bottom" id="clf-AZ-7tG"/>
-                <constraint firstAttribute="bottom" secondItem="odQ-Or-57i" secondAttribute="bottom" constant="-100" id="hCC-GX-mcd"/>
                 <constraint firstItem="thD-Uu-5kM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nN5-TY-Nh3"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="thD-Uu-5kM" secondAttribute="bottom" id="o7o-oQ-sMV"/>
+                <constraint firstItem="odQ-Or-57i" firstAttribute="top" secondItem="thD-Uu-5kM" secondAttribute="bottom" constant="40" id="qfv-fn-yTv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="135.38230884557723"/>

@@ -43,7 +43,7 @@ extension MovieListInteractor: MovieListInteractorInterface {
     func fetchMovie(category: MoviesCategory, page: Int) {
         if case Reachability()!.connection = Reachability.Connection.none {
             if let movies = MovieRepository.getMoviesFromDisk(category: category) {
-                self.presenterDelegate.cachedMovieFetchedSuccess(Movies(movies: movies), category: category)
+                self.presenterDelegate.movieFetchedSuccess(Movies(movies: movies, cached: true), category: category)
             } else {
                 self.presenterDelegate.movieFetchedFail("No hay internet", category: category)
             }

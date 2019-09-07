@@ -65,7 +65,6 @@ protocol MovieListPresenterInterface: class {
     func categoryDidChange(_ category: MoviesCategory)
     
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
-    func cachedMovieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
     func movieFetchedFail(_ error: String, category: MoviesCategory)
     
     func numberOfSections(category: MoviesCategory) -> Int

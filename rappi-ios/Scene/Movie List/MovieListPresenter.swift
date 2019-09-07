@@ -90,20 +90,12 @@ extension MovieListPresenter: MovieListPresenterInterface {
         } else {
             self.viewDelegate.update(category: category)
         }
-    }
-    
-    func cachedMovieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
-        if self.models[category] == nil {
-            self.models[category] = movies
-            self.viewDelegate.update(category: category)
-            
-            self.viewDelegate.hideLoading()
-            self.viewDelegate.showError("Estas viendo datos guardados, comprueba tu conexion a internet", buttonTitle: "Reintentar") { [weak self] in
+        
+        if models[category]?.cached ?? false {
+            self.viewDelegate.showError("Peliculas cachedas", buttonTitle: "Refrescar") { [weak self] in
                 self?.fetchMovie(category: category,
-                                 page: self?.models[category]?.currentPage ?? 1)
+                                 page: self?.models[category]?.nextPage ?? 1)
             }
-        } else {
-            self.movieFetchedFail("No hay internet", category: category)
         }
     }
     

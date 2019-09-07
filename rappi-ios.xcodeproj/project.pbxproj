@@ -31,6 +31,13 @@
 		0FE03D572321AD9E00161018 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D562321AD9E00161018 /* MovieRepository.swift */; };
 		0FE03D5C23233C6900161018 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D5B23233C6900161018 /* BannerView.swift */; };
 		0FE03D5E23233C9200161018 /* BannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D5D23233C9200161018 /* BannerView.xib */; };
+		0FE03D6123235ADA00161018 /* SearchMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D5F23235ADA00161018 /* SearchMovieTableViewController.swift */; };
+		0FE03D6423235B4C00161018 /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D6323235B4C00161018 /* SearchMovieViewModel.swift */; };
+		0FE03D6823235F8300161018 /* SearchErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D6623235F8300161018 /* SearchErrorTableViewCell.swift */; };
+		0FE03D6923235F8300161018 /* SearchErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D6723235F8300161018 /* SearchErrorTableViewCell.xib */; };
+		0FE03D6E232360CB00161018 /* SearchMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D6C232360CB00161018 /* SearchMovieTableViewCell.swift */; };
+		0FE03D6F232360CB00161018 /* SearchMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D6D232360CB00161018 /* SearchMovieTableViewCell.xib */; };
+		0FE03D732323692700161018 /* SearchMovieTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D722323692700161018 /* SearchMovieTableViewController.xib */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -92,6 +99,13 @@
 		0FE03D562321AD9E00161018 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		0FE03D5B23233C6900161018 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		0FE03D5D23233C9200161018 /* BannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerView.xib; sourceTree = "<group>"; };
+		0FE03D5F23235ADA00161018 /* SearchMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewController.swift; sourceTree = "<group>"; };
+		0FE03D6323235B4C00161018 /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
+		0FE03D6623235F8300161018 /* SearchErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorTableViewCell.swift; sourceTree = "<group>"; };
+		0FE03D6723235F8300161018 /* SearchErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchErrorTableViewCell.xib; sourceTree = "<group>"; };
+		0FE03D6C232360CB00161018 /* SearchMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewCell.swift; sourceTree = "<group>"; };
+		0FE03D6D232360CB00161018 /* SearchMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewCell.xib; sourceTree = "<group>"; };
+		0FE03D722323692700161018 /* SearchMovieTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewController.xib; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -245,6 +259,10 @@
 		0FE03D5923233BFF00161018 /* Search Movie */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D6A2323609F00161018 /* View */,
+				0FE03D5F23235ADA00161018 /* SearchMovieTableViewController.swift */,
+				0FE03D6323235B4C00161018 /* SearchMovieViewModel.swift */,
+				0FE03D722323692700161018 /* SearchMovieTableViewController.xib */,
 			);
 			path = "Search Movie";
 			sourceTree = "<group>";
@@ -256,6 +274,33 @@
 				0FE03D5D23233C9200161018 /* BannerView.xib */,
 			);
 			path = "Banner View";
+			sourceTree = "<group>";
+		};
+		0FE03D6523235F6600161018 /* Error cell */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D6623235F8300161018 /* SearchErrorTableViewCell.swift */,
+				0FE03D6723235F8300161018 /* SearchErrorTableViewCell.xib */,
+			);
+			path = "Error cell";
+			sourceTree = "<group>";
+		};
+		0FE03D6A2323609F00161018 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D6B232360A600161018 /* Result Cell */,
+				0FE03D6523235F6600161018 /* Error cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0FE03D6B232360A600161018 /* Result Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D6C232360CB00161018 /* SearchMovieTableViewCell.swift */,
+				0FE03D6D232360CB00161018 /* SearchMovieTableViewCell.xib */,
+			);
+			path = "Result Cell";
 			sourceTree = "<group>";
 		};
 		0FED736A231E00A300E171EF /* Movie Detail */ = {
@@ -469,7 +514,10 @@
 				0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */,
 				0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */,
 				0FE03D4B2320C87600161018 /* SearchBarHeaderView.xib in Resources */,
+				0FE03D732323692700161018 /* SearchMovieTableViewController.xib in Resources */,
 				0FFBF723231A2FE2005CEB0D /* MovieListViewController.xib in Resources */,
+				0FE03D6F232360CB00161018 /* SearchMovieTableViewCell.xib in Resources */,
+				0FE03D6923235F8300161018 /* SearchErrorTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +601,7 @@
 				0FFBF70E2318C2CD005CEB0D /* Movies.swift in Sources */,
 				0FFBF72E231AECEB005CEB0D /* TabBarController.swift in Sources */,
 				0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */,
+				0FE03D6823235F8300161018 /* SearchErrorTableViewCell.swift in Sources */,
 				0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */,
 				0FE03D402320940F00161018 /* BaseMovieProtocol.swift in Sources */,
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
@@ -564,6 +613,8 @@
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
 				0FE03D572321AD9E00161018 /* MovieRepository.swift in Sources */,
 				0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */,
+				0FE03D6123235ADA00161018 /* SearchMovieTableViewController.swift in Sources */,
+				0FE03D6423235B4C00161018 /* SearchMovieViewModel.swift in Sources */,
 				0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */,
 				0FE03D3E232091F900161018 /* MovieDetailInterface.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,
@@ -574,6 +625,7 @@
 				0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,
 				0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */,
+				0FE03D6E232360CB00161018 /* SearchMovieTableViewCell.swift in Sources */,
 				0FED7377231F584900E171EF /* DetailTransitionViewProtocol.swift in Sources */,
 				0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */,
 				0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */,

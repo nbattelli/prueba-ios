@@ -16,7 +16,7 @@ final class MovieListRouter: NSObject {
 }
 
 extension MovieListRouter: MovieListRouterInterface {
-
+    
     func buildMovieViewController() -> UIViewController {
         let interactor = MovieListInteractor()
         let presenter = MovieListPresenter(self, interactor: interactor)
@@ -25,6 +25,13 @@ extension MovieListRouter: MovieListRouterInterface {
         self.navigationController = UINavigationController(rootViewController: vc)
         self.navigationController.transitioningDelegate = self
         self.navigationController.delegate = self
+        
+        
+        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(showSearchMovies))
+
+      
         return self.navigationController
     }
     
@@ -36,6 +43,11 @@ extension MovieListRouter: MovieListRouterInterface {
         self.cellTransitionView = cell
         self.detailTransitionView = vc
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func showSearchMovies() {
+        let vc = SearchMovieTableViewController()
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }
 
@@ -58,3 +70,4 @@ extension MovieListRouter: UINavigationControllerDelegate, UIViewControllerTrans
         }
     }
 }
+

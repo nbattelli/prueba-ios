@@ -65,11 +65,11 @@ extension MovieListPresenter: MovieListPresenterInterface {
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
         self.viewDelegate.hideLoading()
         
-        let newMoviews = movies.results
+        let newMovies = movies.results
         if self.models[category] == nil || movies.currentPage == 1 {
             self.models[category] = movies
         } else {
-            self.models[category]?.results.append(contentsOf: newMoviews)
+            self.models[category]?.results.append(contentsOf: newMovies)
         }
         
         MovieRepository.saveMoviesToDisk(category: category,
@@ -77,9 +77,9 @@ extension MovieListPresenter: MovieListPresenterInterface {
         
         self.models[category]?.currentPage = movies.currentPage
         
-        let startIndex = self.models[category]!.results.count - newMoviews.count
+        let startIndex = self.models[category]!.results.count - newMovies.count
         if startIndex > 0 {
-            let endIndex = startIndex + newMoviews.count
+            let endIndex = startIndex + newMovies.count
             let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
             
             if self.models[category]?.hasMorePages ?? false {

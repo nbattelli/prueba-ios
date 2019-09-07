@@ -11,8 +11,8 @@ import Foundation
 final class MovieRepository {
     static let fileManager = FileManager()
     
-    static func saveMoviesToDisk(category: MoviesCategory, movies: [Movie]?) {
-        guard let movies = movies, movies.count > 0 else {return}
+    static func saveMoviesToDisk(category: MoviesCategory, movies: MovieListViewModel?) {
+        guard let movies = movies else {return}
         let url = self.getDocumentsURL().appendingPathComponent(category.fileName())
         let encoder = JSONEncoder()
         do {
@@ -26,7 +26,7 @@ final class MovieRepository {
         }
     }
     
-    static func getMoviesFromDisk(category: MoviesCategory) -> [Movie]? {
+    static func getMoviesFromDisk(category: MoviesCategory) -> MovieListViewModel? {
         let url = getDocumentsURL().appendingPathComponent(category.fileName())
         
         if !fileManager.fileExists(atPath: url.path) {
@@ -36,13 +36,13 @@ final class MovieRepository {
         if let data = fileManager.contents(atPath: url.path) {
             let decoder = JSONDecoder()
             do {
-                let posts = try decoder.decode([Movie].self, from: data)
-                return posts
+                let movies = try decoder.decode(MovieListViewModel.self, from: data)
+                return movies
             } catch {
-                fatalError(error.localizedDescription)
+                return nil
             }
         } else {
-            fatalError("No data retrieved from posts.json")
+            fatalError("No data retrieved from file")
         }
     }
     

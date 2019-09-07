@@ -35,7 +35,7 @@ extension MovieListRouter: MovieListRouterInterface {
         return self.navigationController
     }
     
-    func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: Movie) {
+    func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: BaseMovieProtocol) {
         let detailRouter = MovieDetailRouter()
         detailRouter.parentRouter = self
         

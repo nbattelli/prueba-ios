@@ -64,18 +64,20 @@ protocol MovieListPresenterInterface: class {
     func reloadCurrentCategory()
     func categoryDidChange(_ category: MoviesCategory)
     
-    func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
+    func movieFetchedSuccess(_ indexes: [Int], category: MoviesCategory)
     func movieFetchedFail(_ error: String, category: MoviesCategory)
     
     func numberOfSections(category: MoviesCategory) -> Int
     func numberOfCell(in section: Int, category: MoviesCategory) -> Int
     func cellConfigurator(at indexPath: IndexPath, category: MoviesCategory) -> CellConfigurator
     func cellWasTapped(_ cell: CellTransitionViewProtocol, at indexPath: IndexPath, category: MoviesCategory)
-    func filterMovies(_ filter: String)
+    func filterMovies(_ query: String)
 }
 
 //MARK: Interactor
 protocol MovieListInteractorInterface: class {
+    var viewModel: [MoviesCategory: MovieListViewModelInterface] {get}
+    
     var presenterDelegate: MovieListPresenterInterface! {set get}
     func fetchMovie(category: MoviesCategory, page: Int)
 }
@@ -84,6 +86,6 @@ protocol MovieListInteractorInterface: class {
 //MARK: Router
 protocol MovieListRouterInterface: class {
     func buildMovieViewController() -> UIViewController
-    func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: Movie)
+    func movieCellWasTapped(_ cell: CellTransitionViewProtocol, model: BaseMovieProtocol)
 }
 

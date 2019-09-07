@@ -183,7 +183,6 @@ extension MovieListViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        self.presenter.filterMovies("")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

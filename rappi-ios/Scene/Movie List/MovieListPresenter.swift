@@ -18,16 +18,11 @@ final class MovieListPresenter {
     
     var currentCategory: MoviesCategory = MoviesCategory.defaultMoviesCategory
     
-    var models: [MoviesCategory: Movies] = [:] {
-        didSet {
-            self.filteredModels = models
-        }
+    var viewModel: [MoviesCategory: MovieListViewModelInterface] {
+        return self.interactor.viewModel
     }
     
-    var filteredModels: [MoviesCategory: Movies] = [:]
-    var isFiltering: [MoviesCategory: Bool] = [:]
-    
-    init(_ router: MovieListRouterInterface, interactor: MovieListInteractorInterface) {
+    init(_ router: MovieListRouterInterface, interactor: MovieListInteractor) {
         self.router = router
         self.interactor = interactor
         self.interactor.presenterDelegate = self
@@ -35,7 +30,7 @@ final class MovieListPresenter {
     
     private func fetchMovie(category: MoviesCategory, page: Int) {
         self.viewDelegate.hideError()
-        if self.models[category]?.results.count ?? 0 == 0 {
+        if self.viewModel[category]?.hasMovies() ?? false {
             self.viewDelegate.showLoading()
         }
         self.interactor.fetchMovie(category: self.currentCategory, page: page)
@@ -45,56 +40,48 @@ final class MovieListPresenter {
 extension MovieListPresenter: MovieListPresenterInterface {
     
     func viewDidLoad() {
-        if models[self.currentCategory] == nil {
+        if self.viewModel[self.currentCategory] == nil {
             self.reloadCurrentCategory()
         }
     }
     
     func reloadCurrentCategory() {
-        self.fetchMovie(category: self.currentCategory, page: 1)
+        if self.viewModel[self.currentCategory] == nil {
+            self.fetchMovie(category: self.currentCategory, page: 1)
+        }
+        
     }
     
     func categoryDidChange(_ category: MoviesCategory) {
         guard self.currentCategory != category else {return}
         self.currentCategory = category
-        if models[category] == nil {
-            self.fetchMovie(category: category, page: 1)
-        }
+        self.reloadCurrentCategory()
     }
     
-    func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory) {
+    func movieFetchedSuccess(_ indexes: [Int], category: MoviesCategory) {
         self.viewDelegate.hideLoading()
         
-        let newMovies = movies.results
-        if self.models[category] == nil || movies.currentPage == 1 {
-            self.models[category] = movies
-        } else {
-            self.models[category]?.results.append(contentsOf: newMovies)
+        let newIndexPath = indexes.map { (row) in
+            return IndexPath(row: row,
+                             section: moviesSection)
         }
         
-        MovieRepository.saveMoviesToDisk(category: category,
-                                         movies: self.models[category]?.results)
-        
-        self.models[category]?.currentPage = movies.currentPage
-        
-        let startIndex = self.models[category]!.results.count - newMovies.count
-        if startIndex > 0 {
-            let endIndex = startIndex + newMovies.count
-            let indexes = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-            
-            if self.models[category]?.hasMorePages ?? false {
-                self.viewDelegate.updateMoviesSection(at:indexes, category: category)
-            } else {
-                self.viewDelegate.updateMoviesSection(at: indexes, removeSection: loadingSection, category: category)
-            }
-        } else {
+        guard newIndexPath.count > 0 else {
             self.viewDelegate.update(category: category)
+            return
+        }
+        if self.viewModel[category]?.isFromCache ?? false {
+            self.viewDelegate.update(category: category)
+        } else if self.viewModel[category]?.hasMorePages ?? false {
+            self.viewDelegate.updateMoviesSection(at:newIndexPath, category: category)
+        } else {
+            self.viewDelegate.updateMoviesSection(at: newIndexPath, removeSection: loadingSection, category: category)
         }
         
-        if models[category]?.cached ?? false {
+        if self.viewModel[category]?.isFromCache ?? false {
             self.viewDelegate.showError("Peliculas cachedas", buttonTitle: "Refrescar") { [weak self] in
                 self?.fetchMovie(category: category,
-                                 page: self?.models[category]?.nextPage ?? 1)
+                                 page: 1)
             }
         }
     }
@@ -103,13 +90,14 @@ extension MovieListPresenter: MovieListPresenterInterface {
         self.viewDelegate.hideLoading()
         self.viewDelegate.showError(error, buttonTitle: "Reintentar") { [weak self] in
             self?.fetchMovie(category: category,
-                             page: self?.models[category]?.nextPage ?? 1)
+                             page: self?.viewModel[category]?.nextPage ?? 1)
         }
     }
     
     func numberOfSections(category: MoviesCategory) -> Int {
-        guard let viewModel = self.filteredModels[category] else { return 0 }
-        if self.isFiltering[category] ?? false {
+        guard let viewModel = self.viewModel[category] else { return 0 }
+        if self.viewModel[category]?.isFiltering ?? false ||
+            self.viewModel[category]?.isFromCache ?? false {
             return 1
         }
         return viewModel.hasMorePages ? 2 : 1
@@ -117,7 +105,7 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func numberOfCell(in section: Int, category: MoviesCategory) -> Int {
         if section == 0  {
-            return self.filteredModels[category]?.results.count ?? 0
+            return self.viewModel[category]?.moviesToShow.count ?? 0
         } else if section == 1 {
             return 1
         } else {
@@ -127,14 +115,11 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func cellConfigurator(at indexPath: IndexPath, category: MoviesCategory) -> CellConfigurator {
         if indexPath.section == 0,
-            let movie = self.filteredModels[category]?.results[indexPath.row] {
+            let movie = self.viewModel[category]?.moviesToShow[indexPath.row] {
             
-            let viewModel = MovieListCellViewModel.init(title: movie.title,
-                                                        movieDescription: movie.overview,
-                                                        posterPath: movie.posterPath)
-            return TableCellConfigurator<MovieListTableViewCell, MovieListCellViewModel>(item: viewModel)
+            return TableCellConfigurator<MovieListTableViewCell, MovieViewModel>(item: movie)
         } else {
-            self.fetchMovie(category: category, page: self.filteredModels[category]?.nextPage ?? 1)
+            self.fetchMovie(category: category, page: self.viewModel[category]?.nextPage ?? 1)
             return TableCellConfigurator<LoadingTableViewCell, String>(item: "Cargando")
         }
     }
@@ -142,28 +127,12 @@ extension MovieListPresenter: MovieListPresenterInterface {
     func cellWasTapped(_ cell: CellTransitionViewProtocol,
                        at indexPath: IndexPath,
                        category: MoviesCategory) {
-        guard let model = self.filteredModels[category]?.results[indexPath.row] else {return}
+        guard let model = self.viewModel[category]?.moviesToShow[indexPath.row] else {return}
         self.router.movieCellWasTapped(cell, model: model)
     }
     
-    func filterMovies(_ filter: String) {
-        self.isFiltering[currentCategory] = filter.count > 0
-        
-        let originalMovies = self.models[self.currentCategory]?.results
-        if self.isFiltering[currentCategory] ?? false {
-            guard let movies = originalMovies else { return }
-            let filter = filter.lowercased()
-            self.filteredModels[self.currentCategory]?.results = movies.filter({ (movie) -> Bool in
-                let filterInTitle = movie.title.lowercased().contains(filter)
-                let filterInOverview = movie.overview?.lowercased().contains(filter) ?? false
-                return filterInTitle || filterInOverview
-            })
-        } else {
-            self.filteredModels[self.currentCategory]?.results = originalMovies ?? []
-        }
-        
-        
-        
+    func filterMovies(_ query: String) {
+        self.viewModel[currentCategory]?.filter(query: query)
         self.viewDelegate.update(category: self.currentCategory)
     }
 }

@@ -12,7 +12,6 @@ class SearchBarHeaderView: UIView {
     
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
-            self.searchBar.layer.cornerRadius = 8
             self.searchBar.tintColor = UIColor.secondaryColor
             self.searchBar.barTintColor = UIColor.primaryColor
             self.searchBar.returnKeyType = .done

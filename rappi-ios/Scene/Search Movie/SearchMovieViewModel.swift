@@ -92,9 +92,20 @@ final class SearchMovieViewModel {
             return TableCellConfigurator<SearchErrorTableViewCell, String>(item: "Ingresar 3 caracteres")
         } else {
             let movie = self.movies!.results[indexPath.row]
-            let viewModel = SearchMovieTableViewCellModel(title: movie.title,
-                                                        posterPath: movie.posterPath)
+            let viewModel = SearchMovieTableViewCellModel(id: movie.id,
+                                                          title: movie.title,
+                                                          overview: movie.overview,
+                                                          posterPath: movie.posterPath)
             return TableCellConfigurator<SearchMovieTableViewCell, SearchMovieTableViewCellModel>(item: viewModel)
         }
+    }
+    
+    func movie(at indexPath: IndexPath) -> BaseMovieProtocol {
+        let movie = self.movies!.results[indexPath.row]
+        let viewModel = SearchMovieTableViewCellModel(id: movie.id,
+                                                      title: movie.title,
+                                                      overview: movie.overview,
+                                                      posterPath: movie.posterPath)
+        return viewModel
     }
 }

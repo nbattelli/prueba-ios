@@ -10,9 +10,28 @@ import UIKit
 
 class SearchMovieTableViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            self.searchBar.tintColor = UIColor.secondaryColor
+            self.searchBar.barTintColor = UIColor.primaryColor
+            self.searchBar.returnKeyType = .done
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
+    
+    let router: SearchMovieRouter
     let viewModel = SearchMovieViewModel()
+    
+    var timer: Timer?
+    
+    required init(router: SearchMovieRouter) {
+        self.router = router
+        super.init(nibName: String(describing: type(of: self)), bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +79,21 @@ extension SearchMovieTableViewController: UITableViewDelegate, UITableViewDataSo
         configurator.configure(cell: cell)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellTransitionViewProtocol else {return}
+        let model = self.viewModel.movie(at: indexPath)
+        self.router.movieCellWasTapped(cell, model: model)
+    }
 }
 
 extension SearchMovieTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (_) in
+            self.viewModel.searchMovies()
+        })
+        
         self.viewModel.query = searchText
-        self.viewModel.searchMovies()
     }
 }

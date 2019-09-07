@@ -12,7 +12,15 @@ target 'rappi-ios' do
   pod 'MaterialComponents/BottomNavigation'
   pod 'SDWebImage'
   pod 'ReachabilitySwift'
+  
+  target 'rappi-iosTests' do
+    inherit! :search_paths
+    pod 'Nimble', '8.0.1'
+    pod 'Quick'
+  end
 end
+
+
 
 pre_install do |installer|
   installer.analysis_result.specifications.each do |s|

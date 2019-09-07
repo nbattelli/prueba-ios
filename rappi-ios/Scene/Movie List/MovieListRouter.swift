@@ -46,13 +46,18 @@ extension MovieListRouter: MovieListRouterInterface {
     }
     
     @objc func showSearchMovies() {
-        let vc = SearchMovieTableViewController()
-        self.navigationController.pushViewController(vc, animated: true)
+        let searchRouter = SearchMovieRouter()
+        searchRouter.parentRouter = self
+        self.navigationController.pushViewController(searchRouter.buildSearchMovieViewController(router: searchRouter), animated: true)
     }
 }
 
 extension MovieListRouter: UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        guard toVC is MovieDetailViewInterface ||
+         fromVC is MovieDetailViewInterface else {return nil}
+        
         guard let cell = self.cellTransitionView,
             let detail = self.detailTransitionView else
         {return nil}

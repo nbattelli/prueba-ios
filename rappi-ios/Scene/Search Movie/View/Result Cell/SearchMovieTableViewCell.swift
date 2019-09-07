@@ -55,7 +55,17 @@ class SearchMovieTableViewCell: UITableViewCell, ConfigurableCell {
     }
 }
 
-struct SearchMovieTableViewCellModel {
-    var title: String?
+extension SearchMovieTableViewCell: CellTransitionViewProtocol {
+    func transitionImageView() -> UIImageView {
+        return self.movieImageView
+    }
+    
+    
+}
+
+struct SearchMovieTableViewCellModel: BaseMovieProtocol {
+    var id: Int
+    var title: String
+    var overview: String?
     var posterPath: String?
 }

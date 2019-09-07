@@ -40,6 +40,7 @@
 		0FE03D732323692700161018 /* SearchMovieTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D722323692700161018 /* SearchMovieTableViewController.xib */; };
 		0FE03D752324014500161018 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D742324014400161018 /* MovieListViewModel.swift */; };
 		0FE03D772324019B00161018 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D762324019B00161018 /* MovieViewModel.swift */; };
+		0FE03D79232428E400161018 /* SearchMovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D78232428E400161018 /* SearchMovieRouter.swift */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -110,6 +111,7 @@
 		0FE03D722323692700161018 /* SearchMovieTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewController.xib; sourceTree = "<group>"; };
 		0FE03D742324014400161018 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		0FE03D762324019B00161018 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		0FE03D78232428E400161018 /* SearchMovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieRouter.swift; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				0FE03D6A2323609F00161018 /* View */,
 				0FE03D5F23235ADA00161018 /* SearchMovieTableViewController.swift */,
 				0FE03D6323235B4C00161018 /* SearchMovieViewModel.swift */,
+				0FE03D78232428E400161018 /* SearchMovieRouter.swift */,
 				0FE03D722323692700161018 /* SearchMovieTableViewController.xib */,
 			);
 			path = "Search Movie";
@@ -623,6 +626,7 @@
 				0FE03D772324019B00161018 /* MovieViewModel.swift in Sources */,
 				0FE03D6123235ADA00161018 /* SearchMovieTableViewController.swift in Sources */,
 				0FE03D6423235B4C00161018 /* SearchMovieViewModel.swift in Sources */,
+				0FE03D79232428E400161018 /* SearchMovieRouter.swift in Sources */,
 				0FFBF730231B0B0A005CEB0D /* TabBar.swift in Sources */,
 				0FE03D3E232091F900161018 /* MovieDetailInterface.swift in Sources */,
 				0FFBF71E231A1E4F005CEB0D /* MovieListInteractor.swift in Sources */,

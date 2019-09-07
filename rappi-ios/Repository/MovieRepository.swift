@@ -26,11 +26,11 @@ final class MovieRepository {
         }
     }
     
-    static func getMoviesFromDisk(category: MoviesCategory) -> [Movie] {
+    static func getMoviesFromDisk(category: MoviesCategory) -> [Movie]? {
         let url = getDocumentsURL().appendingPathComponent(category.fileName())
         
         if !fileManager.fileExists(atPath: url.path) {
-            fatalError("No posts to get, posts.json does not exist")
+            return nil
         }
         
         if let data = fileManager.contents(atPath: url.path) {

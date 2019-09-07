@@ -14,3 +14,8 @@ target 'rappi-ios' do
   pod 'ReachabilitySwift'
 end
 
+pre_install do |installer|
+  installer.analysis_result.specifications.each do |s|
+    s.swift_version = '4.2'
+  end
+end

@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="rappi_ios" customModuleProvider="target">
             <connections>
+                <outlet property="bottomErrorViewLayour" destination="hCC-GX-mcd" id="D8u-NP-Lym"/>
                 <outlet property="containerTableView" destination="WbI-Vn-LAW" id="ovT-p7-hEj"/>
+                <outlet property="errorView" destination="odQ-Or-57i" id="fa4-OG-VDR"/>
                 <outlet property="scrollView" destination="thD-Uu-5kM" id="DOO-Iz-w6A"/>
                 <outlet property="tabBar" destination="oQh-KB-asl" id="aMH-eL-HTA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TwL-C5-nGg"/>
@@ -46,14 +48,21 @@
                         <constraint firstAttribute="bottom" secondItem="WbI-Vn-LAW" secondAttribute="bottom" id="upb-Ui-DaW"/>
                     </constraints>
                 </scrollView>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="odQ-Or-57i" customClass="BannerView" customModule="rappi_ios" customModuleProvider="target">
+                    <rect key="frame" x="8" y="727" width="359" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="thD-Uu-5kM" secondAttribute="trailing" id="2qy-JT-lGV"/>
                 <constraint firstItem="oQh-KB-asl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Amy-9B-vyH"/>
                 <constraint firstItem="oQh-KB-asl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Blp-YD-yeS"/>
+                <constraint firstItem="odQ-Or-57i" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="EVE-FG-5Pz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="odQ-Or-57i" secondAttribute="trailing" constant="8" id="GXu-t2-RVQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oQh-KB-asl" secondAttribute="trailing" constant="16" id="LMG-lG-IQt"/>
                 <constraint firstItem="thD-Uu-5kM" firstAttribute="top" secondItem="oQh-KB-asl" secondAttribute="bottom" id="clf-AZ-7tG"/>
+                <constraint firstAttribute="bottom" secondItem="odQ-Or-57i" secondAttribute="bottom" constant="-100" id="hCC-GX-mcd"/>
                 <constraint firstItem="thD-Uu-5kM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nN5-TY-Nh3"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="thD-Uu-5kM" secondAttribute="bottom" id="o7o-oQ-sMV"/>
             </constraints>

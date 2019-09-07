@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BannerView" customModule="rappi_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="errorButton" destination="azv-oJ-CVh" id="9CD-zC-l1T"/>
+                <outlet property="errorMessageLabel" destination="Yna-Av-jDl" id="vBc-6P-SgH"/>
+                <outlet property="hideButtonLayout" destination="V1L-La-rmX" id="bLV-Dm-Iaw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="No hay conexión a internetNo hay conexión a internet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yna-Av-jDl">
+                    <rect key="frame" x="8" y="8" width="262" height="113"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmF-eX-gMo">
+                    <rect key="frame" x="293" y="0.0" width="82" height="129"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azv-oJ-CVh">
+                            <rect key="frame" x="8" y="49.5" width="66" height="30"/>
+                            <state key="normal" title="Refrescar">
+                                <color key="titleColor" red="1" green="0.21712682280741946" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="errorWasTapped" destination="-1" eventType="touchUpInside" id="ETN-UB-X6n"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="azv-oJ-CVh" firstAttribute="leading" secondItem="EmF-eX-gMo" secondAttribute="leading" priority="600" constant="8" id="Dri-uc-xiM"/>
+                        <constraint firstAttribute="width" priority="250" id="V1L-La-rmX"/>
+                        <constraint firstItem="azv-oJ-CVh" firstAttribute="centerY" secondItem="EmF-eX-gMo" secondAttribute="centerY" id="hFl-k6-Eee"/>
+                        <constraint firstAttribute="trailing" secondItem="azv-oJ-CVh" secondAttribute="trailing" constant="8" id="owT-Zt-eAu"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Yna-Av-jDl" secondAttribute="bottom" constant="8" id="BNo-Mz-phH"/>
+                <constraint firstItem="EmF-eX-gMo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OUQ-O2-S0z"/>
+                <constraint firstItem="Yna-Av-jDl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="VWW-G1-7lt"/>
+                <constraint firstItem="EmF-eX-gMo" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="WU6-B9-bRF"/>
+                <constraint firstItem="Yna-Av-jDl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="dQ4-ur-1yc"/>
+                <constraint firstItem="EmF-eX-gMo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yna-Av-jDl" secondAttribute="trailing" constant="8" id="nBe-we-zJW"/>
+                <constraint firstAttribute="trailing" secondItem="EmF-eX-gMo" secondAttribute="trailing" id="pLR-bS-l1m"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138" y="25"/>
+        </view>
+    </objects>
+</document>

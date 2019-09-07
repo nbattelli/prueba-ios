@@ -46,7 +46,7 @@ protocol MovieListViewInterface: class {
     func update(category: MoviesCategory)
     func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory)
     func updateMoviesSection(at indexPaths:[IndexPath], removeSection: Int, category: MoviesCategory)
-    func showError(_ error: String)
+    func showError(_ error: String, buttonTitle: String, actionBlock:(()->Void)?)
     func hideError()
     func showLoading()
     func hideLoading()
@@ -65,6 +65,7 @@ protocol MovieListPresenterInterface: class {
     func categoryDidChange(_ category: MoviesCategory)
     
     func movieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
+    func cachedMovieFetchedSuccess(_ movies: Movies, category: MoviesCategory)
     func movieFetchedFail(_ error: String, category: MoviesCategory)
     
     func numberOfSections(category: MoviesCategory) -> Int

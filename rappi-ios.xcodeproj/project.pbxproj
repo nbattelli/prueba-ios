@@ -29,6 +29,8 @@
 		0FE03D4B2320C87600161018 /* SearchBarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D492320C87600161018 /* SearchBarHeaderView.xib */; };
 		0FE03D5023214BEC00161018 /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D4F23214BEC00161018 /* UIView+Loading.swift */; };
 		0FE03D572321AD9E00161018 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D562321AD9E00161018 /* MovieRepository.swift */; };
+		0FE03D5C23233C6900161018 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE03D5B23233C6900161018 /* BannerView.swift */; };
+		0FE03D5E23233C9200161018 /* BannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE03D5D23233C9200161018 /* BannerView.xib */; };
 		0FED736D231E00D500E171EF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED736B231E00D500E171EF /* MovieDetailViewController.swift */; };
 		0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED736C231E00D500E171EF /* MovieDetailViewController.xib */; };
 		0FED7371231EF03300E171EF /* CellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7370231EF03300E171EF /* CellTransition.swift */; };
@@ -88,6 +90,8 @@
 		0FE03D492320C87600161018 /* SearchBarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarHeaderView.xib; sourceTree = "<group>"; };
 		0FE03D4F23214BEC00161018 /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
 		0FE03D562321AD9E00161018 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		0FE03D5B23233C6900161018 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		0FE03D5D23233C9200161018 /* BannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerView.xib; sourceTree = "<group>"; };
 		0FED736B231E00D500E171EF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		0FED736C231E00D500E171EF /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		0FED7370231EF03300E171EF /* CellTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransition.swift; sourceTree = "<group>"; };
@@ -238,6 +242,22 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		0FE03D5923233BFF00161018 /* Search Movie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Search Movie";
+			sourceTree = "<group>";
+		};
+		0FE03D5A23233C3D00161018 /* Banner View */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D5B23233C6900161018 /* BannerView.swift */,
+				0FE03D5D23233C9200161018 /* BannerView.xib */,
+			);
+			path = "Banner View";
+			sourceTree = "<group>";
+		};
 		0FED736A231E00A300E171EF /* Movie Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +310,7 @@
 		0FFBF7122318CF76005CEB0D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D5923233BFF00161018 /* Search Movie */,
 				0FFBF71A231A1791005CEB0D /* Movie List */,
 				0FED736A231E00A300E171EF /* Movie Detail */,
 			);
@@ -341,6 +362,7 @@
 		0FFBF72C231AECCC005CEB0D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0FE03D5A23233C3D00161018 /* Banner View */,
 				0FE03D472320C81000161018 /* Header search */,
 				0F9CFA00231B75C900322DAB /* Loading Cell */,
 				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
@@ -440,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE03D5E23233C9200161018 /* BannerView.xib in Resources */,
 				0FED736E231E00D500E171EF /* MovieDetailViewController.xib in Resources */,
 				0FFBF729231A315F005CEB0D /* MovieListTableViewCell.xib in Resources */,
 				0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */,
@@ -521,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE03D5C23233C6900161018 /* BannerView.swift in Sources */,
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
 				0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */,

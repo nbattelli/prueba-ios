@@ -31,9 +31,10 @@ final class MovieListViewController: UIViewController {
         }
     }
     @IBOutlet weak var containerTableView: UIStackView!
+    @IBOutlet weak var errorView: BannerView!
+    @IBOutlet weak var bottomErrorViewLayour: NSLayoutConstraint!
     
     var tableViews: [MoviesCategory: UITableView]
-    var refreshControls: [MoviesCategory: UIRefreshControl] = [:]
     
     var presenter: MovieListPresenterInterface!
     
@@ -88,17 +89,6 @@ final class MovieListViewController: UIViewController {
         let header = SearchBarHeaderView.buildView()
         header.searchBar.delegate = self
         tableView.tableHeaderView = header
-
-        let refreshControl = UIRefreshControl()
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
-        let category = self.getCategory(for: tableView)!
-        self.refreshControls[category] = refreshControl
-
-    }
-    
-    @objc private func refreshData(sender: UIRefreshControl) {
-        self.presenter.reloadCurrentCategory()
     }
     
     private func getCategory(for tableView: UITableView) -> MoviesCategory? {
@@ -111,7 +101,6 @@ final class MovieListViewController: UIViewController {
 extension MovieListViewController: MovieListViewInterface {
     func update(category: MoviesCategory) {
         self.tableViews[category]?.reloadData()
-        self.refreshControls[category]?.endRefreshing()
     }
     
     func updateMoviesSection(at indexPaths:[IndexPath], category: MoviesCategory) {
@@ -129,12 +118,19 @@ extension MovieListViewController: MovieListViewInterface {
         tableView.endUpdates()
     }
     
-    func showError(_ error: String) {
-        print("show error \(error)")
+    func showError(_ error: String, buttonTitle: String, actionBlock:(()->Void)?) {
+        self.errorView.configure(error: error, buttonTitle: buttonTitle, actionBlock: actionBlock)
+        self.bottomErrorViewLayour.constant = 16
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     func hideError() {
-        print("hide error")
+        self.bottomErrorViewLayour.constant = -(self.view.safeAreaInsets.bottom + self.errorView.frame.height)
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     func showLoading() {
@@ -215,5 +211,4 @@ extension MovieListViewController: UIScrollViewDelegate {
         let category = MoviesCategory(rawValue: index) ?? MoviesCategory.defaultMoviesCategory
         self.presenter.categoryDidChange(category)
     }
-    
 }

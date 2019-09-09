@@ -10,14 +10,14 @@ import Foundation
 
 final class MovieDetailInteractor {
     weak var presenterDelegate: MovieDetailPresenterInterface!
-    let connector = NetworkConnector<MovieConfigurator, Movie>()
+    let connector = NetworkConnector<MovieConfigurator, MovieDetail>()
 }
 
 extension MovieDetailInteractor: MovieDetailInteractorInterface {
     
-    func fetchMovieDetail(id: String) {
+    func fetchMovieDetail(id: Int) {
         connector.cancel()
-        connector.request(MovieConfigurator.detail(id: id)) { (result) in
+        connector.request(MovieConfigurator.detail(id: "\(id)")) { (result) in
             switch result {
             case .success(let model):
                 DispatchQueue.main.async { [weak self] in

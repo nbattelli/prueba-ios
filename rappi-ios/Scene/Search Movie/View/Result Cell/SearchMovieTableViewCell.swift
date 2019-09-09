@@ -68,4 +68,6 @@ struct SearchMovieTableViewCellModel: BaseMovieProtocol {
     var title: String
     var overview: String?
     var posterPath: String?
+    var voteAvarage: Double?
+    let releaseDate: String?
 }

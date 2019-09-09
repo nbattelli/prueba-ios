@@ -13,4 +13,6 @@ protocol BaseMovieProtocol {
     var title: String { get }
     var overview: String? { get }
     var posterPath: String? { get }
+    var voteAvarage: Double? { get }
+    var releaseDate: String? { get }
 }

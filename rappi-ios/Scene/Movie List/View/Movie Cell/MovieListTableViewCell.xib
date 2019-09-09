@@ -30,30 +30,47 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBH-yu-lfN">
-                                <rect key="frame" x="85" y="24" width="195" height="26.5"/>
+                                <rect key="frame" x="85" y="16" width="195" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsN-H1-eh9">
-                                <rect key="frame" x="85" y="54.5" width="195" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsN-H1-eh9">
+                                <rect key="frame" x="85" y="46.5" width="195" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmP-Vm-JbK" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="85" y="67.5" width="96" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="-1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="4.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VBH-yu-lfN" secondAttribute="trailing" constant="8" id="258-vh-fgG"/>
+                            <constraint firstItem="nmP-Vm-JbK" firstAttribute="top" secondItem="nsN-H1-eh9" secondAttribute="bottom" constant="4" id="Clg-S1-8Ma"/>
                             <constraint firstAttribute="bottom" secondItem="bmv-Jf-VGb" secondAttribute="bottom" constant="8" id="Ela-CZ-4bS"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nmP-Vm-JbK" secondAttribute="bottom" constant="8" id="FdS-da-9I5"/>
                             <constraint firstItem="nsN-H1-eh9" firstAttribute="top" secondItem="VBH-yu-lfN" secondAttribute="bottom" constant="4" id="LbF-zY-lsk"/>
                             <constraint firstItem="nsN-H1-eh9" firstAttribute="leading" secondItem="VBH-yu-lfN" secondAttribute="leading" id="MuO-Ax-9HD"/>
+                            <constraint firstItem="nmP-Vm-JbK" firstAttribute="leading" secondItem="nsN-H1-eh9" secondAttribute="leading" id="Vmk-qb-0en"/>
                             <constraint firstItem="VBH-yu-lfN" firstAttribute="leading" secondItem="bmv-Jf-VGb" secondAttribute="trailing" constant="8" id="X3c-n8-rOE"/>
                             <constraint firstAttribute="trailing" secondItem="nsN-H1-eh9" secondAttribute="trailing" constant="8" id="jTb-LM-h2M"/>
                             <constraint firstItem="bmv-Jf-VGb" firstAttribute="leading" secondItem="dOG-a2-0W7" secondAttribute="leading" constant="8" id="lus-tk-u42"/>
                             <constraint firstItem="bmv-Jf-VGb" firstAttribute="top" secondItem="dOG-a2-0W7" secondAttribute="top" constant="8" id="rm6-5L-Smf"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nsN-H1-eh9" secondAttribute="bottom" constant="16" id="su5-sy-h0J"/>
-                            <constraint firstItem="VBH-yu-lfN" firstAttribute="top" secondItem="bmv-Jf-VGb" secondAttribute="top" constant="16" id="uF1-Fn-7Am"/>
+                            <constraint firstItem="VBH-yu-lfN" firstAttribute="top" secondItem="bmv-Jf-VGb" secondAttribute="top" constant="8" id="uF1-Fn-7Am"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +86,7 @@
                 <outlet property="containerView" destination="dOG-a2-0W7" id="ttw-2n-ig1"/>
                 <outlet property="descriptionLabel" destination="nsN-H1-eh9" id="wXH-bQ-VoJ"/>
                 <outlet property="movieImageView" destination="bmv-Jf-VGb" id="VDs-vk-Z3O"/>
+                <outlet property="starView" destination="nmP-Vm-JbK" id="5RT-07-IXI"/>
                 <outlet property="titleLabel" destination="VBH-yu-lfN" id="7ae-rc-8m6"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="172.71364317841082"/>

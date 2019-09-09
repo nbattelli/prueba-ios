@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents.MaterialInk
+import Cosmos
 
 final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
     
@@ -35,6 +36,13 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
             descriptionLabel.textColor = UIColor.primaryTextColor
         }
     }
+    @IBOutlet weak var starView: CosmosView! {
+        didSet {
+            starView.settings.filledColor = UIColor.secondaryLightColor
+            starView.settings.filledBorderColor = UIColor.secondaryLightColor
+            starView.settings.emptyBorderColor = UIColor.secondaryLightColor
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,11 +58,13 @@ final class MovieListTableViewCell: UITableViewCell, ConfigurableCell {
         self.movieImageView.image = nil
         self.titleLabel.text = nil
         self.descriptionLabel.text = nil
+        self.starView.rating = 0
     }
     
     func configure(model: MovieViewModel) {
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.overview
+        self.starView.rating = (model.voteAvarage ?? 0) / 2.0
         if let path = model.posterPath {
             let url = "https://image.tmdb.org/t/p/w200\(path)"
             self.movieImageView.load(url: url)

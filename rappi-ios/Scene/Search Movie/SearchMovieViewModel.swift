@@ -95,7 +95,9 @@ final class SearchMovieViewModel {
             let viewModel = SearchMovieTableViewCellModel(id: movie.id,
                                                           title: movie.title,
                                                           overview: movie.overview,
-                                                          posterPath: movie.posterPath)
+                                                          posterPath: movie.posterPath,
+                                                          voteAvarage: movie.voteAvarage,
+                                                          releaseDate: movie.releaseDate)
             return TableCellConfigurator<SearchMovieTableViewCell, SearchMovieTableViewCellModel>(item: viewModel)
         }
     }
@@ -105,7 +107,9 @@ final class SearchMovieViewModel {
         let viewModel = SearchMovieTableViewCellModel(id: movie.id,
                                                       title: movie.title,
                                                       overview: movie.overview,
-                                                      posterPath: movie.posterPath)
+                                                      posterPath: movie.posterPath,
+                                                      voteAvarage: movie.voteAvarage,
+                                                      releaseDate: movie.releaseDate)
         return viewModel
     }
 }

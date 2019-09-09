@@ -1,29 +1,21 @@
 //
-//  Movie.swift
+//  MovieDetail.swift
 //  rappi-ios
 //
-//  Created by Nicolas Battelli on 29/08/2019.
+//  Created by Nicolas Battelli on 08/09/2019.
 //  Copyright © 2019 Nicolas Battelli. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Movie: Codable, BaseMovieProtocol {
+struct MovieDetail: Decodable, BaseMovieProtocol {
     let id: Int
     let title: String
     let overview: String?
     let voteAvarage: Double?
     let posterPath: String?
     let releaseDate: String?
-    
-    init(id: Int, title: String, overview: String?) {
-        self.id = id
-        self.title = title
-        self.overview = overview
-        self.voteAvarage = nil
-        self.posterPath = nil
-        self.releaseDate = nil
-    }
+    let genres: [Genre]?
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -32,5 +24,16 @@ struct Movie: Codable, BaseMovieProtocol {
         case voteAvarage = "vote_average"
         case posterPath = "poster_path"
         case releaseDate = "release_date"
+        case genres
+    }
+}
+
+struct Genre: Decodable {
+    let id: Int
+    let name: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
     }
 }

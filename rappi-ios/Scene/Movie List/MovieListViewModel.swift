@@ -38,7 +38,9 @@ final class MovieListViewModel: MovieListViewModelInterface, Paginable, Codable 
             return MovieViewModel(id: movie.id,
                                   title: movie.title,
                                   overview: movie.overview,
-                                  posterPath: movie.posterPath)
+                                  posterPath: movie.posterPath,
+                                  voteAvarage: movie.voteAvarage,
+                                  releaseDate: movie.releaseDate)
         }
         
         if self.movies.count == 0 || newMovies.currentPage == 1 {

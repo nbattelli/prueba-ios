@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 final class MovieDetailViewController: UIViewController {
     
@@ -19,7 +20,19 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overview: UILabel!
     
+    @IBOutlet weak var starView: CosmosView! {
+        didSet {
+            starView.settings.filledColor = UIColor.secondaryLightColor
+            starView.settings.filledBorderColor = UIColor.secondaryLightColor
+            starView.settings.emptyBorderColor = UIColor.secondaryLightColor
+        }
+    }
+    
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var genreStackView: UIStackView!
+    
     var presenter: MovieDetailPresenterInterface!
+    
     
     // MARK: - Initializers
     required init?(coder aDecoder: NSCoder) {
@@ -36,6 +49,46 @@ final class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.primaryDarkColor
         self.presenter.viewDidLoad()
+        
+        self.setupReleaseDate()
+        self.setupGenre()
+    }
+    
+    private func setupReleaseDate() {
+        guard let releaseDate = self.presenter.viewModel?.releaseDate else {
+            self.releaseDateLabel.isHidden = true
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.date(from:releaseDate) {
+            dateFormatter.dateFormat = "yyyy"
+            let resultString = dateFormatter.string(from: date)
+            
+            self.releaseDateLabel.isHidden = false
+            self.releaseDateLabel.text = resultString
+        } else {
+            self.releaseDateLabel.isHidden = true
+        }
+    }
+    
+    private func setupGenre() {
+        guard let genreDict = self.presenter.viewModel?.genres else {
+            self.genreStackView.isHidden = true
+            return
+        }
+        
+        self.genreStackView.isHidden = false
+        
+        self.genreStackView.subviews.forEach {$0.removeFromSuperview()}
+        
+        let genre = genreDict.map{ $0.name }
+        
+        genre.forEach {
+            let label = TagLabel.buildTagLabel($0)
+            self.genreStackView.addArrangedSubview(label)
+        }
     }
 
 }
@@ -48,10 +101,12 @@ extension MovieDetailViewController: MovieDetailViewInterface {
             self.posterBackgroundImageView.load(url: url)
         }
         self.overview.text = previewMovie.overview
+        self.starView.rating = (previewMovie.voteAvarage ?? 0) / 2.0
     }
     
-    func update(movie: BaseMovieProtocol) {
-        
+    func update() {
+        self.setupReleaseDate()
+        self.setupGenre()
     }
     
     func showError(_ error: String) {

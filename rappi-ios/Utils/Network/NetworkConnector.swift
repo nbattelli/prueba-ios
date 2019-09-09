@@ -64,7 +64,8 @@ final class NetworkConnector<Configuration: NetworkConfiguration, Model: Decodab
                             completion(.failure(error))
                         }
                     } catch (let error) {
-                        completion(.failure(error.localizedDescription))
+                        print(error.localizedDescription)
+                        completion(.failure("Parse error message"))
                     }
                 }
             })
@@ -98,23 +99,27 @@ extension NetworkConnector {
     private func addQueryParameters(_ queryParameters: QueryParameters?,
                                     request: inout URLRequest)
     {
-        guard let queryParameters = queryParameters,
-            !queryParameters.isEmpty,
-            var urlComponents = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)
+        guard var urlComponents = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)
             else { return }
         
         urlComponents.queryItems = [URLQueryItem]()
         
-        for (key,value) in queryParameters {
-            let encodeValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            let queryItem = URLQueryItem(name: key,
-                                         value: encodeValue)
-            urlComponents.queryItems?.append(queryItem)
+        if let queryParameters = queryParameters {
+            for (key,value) in queryParameters {
+                let encodeValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+                let queryItem = URLQueryItem(name: key,
+                                             value: encodeValue)
+                urlComponents.queryItems?.append(queryItem)
+            }
         }
         
         //Default query parameters
         urlComponents.queryItems?.append(URLQueryItem(name: "api_key",
                                                       value: apiKey))
+        
+        urlComponents.queryItems?.append(URLQueryItem(name: "language",
+                                                      value: "es-AR"))
+        
         request.url = urlComponents.url
     }
     

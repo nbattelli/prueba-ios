@@ -11,11 +11,12 @@
 		0F8C363D231761F200FECB82 /* NetworkConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C363C231761F200FECB82 /* NetworkConnector.swift */; };
 		0F9CF9F7231B428000322DAB /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */; };
 		0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */; };
-		0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */; };
 		0F9CFA05231B760100322DAB /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */; };
 		0F9CFA06231B760100322DAB /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */; };
 		0F9CFA08231C0C6A00322DAB /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */; };
 		0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */; };
+		0F9D35532325E0D40001075C /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D35522325E0D40001075C /* MovieDetail.swift */; };
+		0F9D35552325E9960001075C /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D35542325E9960001075C /* TagLabel.swift */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
@@ -78,11 +79,12 @@
 		0F8C363C231761F200FECB82 /* NetworkConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnector.swift; sourceTree = "<group>"; };
 		0F9CF9F6231B428000322DAB /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		0F9CF9FC231B6E2E00322DAB /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
-		0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellViewModel.swift; sourceTree = "<group>"; };
 		0F9CFA03231B760100322DAB /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		0F9CFA07231C0C6A00322DAB /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Configuration.swift"; sourceTree = "<group>"; };
+		0F9D35522325E0D40001075C /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		0F9D35542325E9960001075C /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F5231710D7007167D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */,
 				0FFBF70D2318C2CD005CEB0D /* Movies.swift */,
 				0FFBF70B2318B95F005CEB0D /* Movie.swift */,
+				0F9D35522325E0D40001075C /* MovieDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,7 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				0FFBF726231A315F005CEB0D /* MovieListTableViewCell.swift */,
-				0F9CF9FE231B75A300322DAB /* MovieListCellViewModel.swift */,
 				0FFBF727231A315F005CEB0D /* MovieListTableViewCell.xib */,
 			);
 			path = "Movie Cell";
@@ -421,6 +423,7 @@
 				0F9CFA00231B75C900322DAB /* Loading Cell */,
 				0FFBF72D231AECEB005CEB0D /* TabBarController.swift */,
 				0FFBF72F231B0B0A005CEB0D /* TabBar.swift */,
+				0F9D35542325E9960001075C /* TagLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-rappi-ios/Pods-rappi-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
@@ -560,6 +564,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
@@ -604,6 +609,7 @@
 				0FE03D5C23233C6900161018 /* BannerView.swift in Sources */,
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
+				0F9D35552325E9960001075C /* TagLabel.swift in Sources */,
 				0FE03D422320982600161018 /* MovieDetailPresenter.swift in Sources */,
 				0FED7371231EF03300E171EF /* CellTransition.swift in Sources */,
 				0FE03D4A2320C87600161018 /* SearchBarHeaderView.swift in Sources */,
@@ -616,8 +622,8 @@
 				0FFBF719231A1785005CEB0D /* MovieListInterface.swift in Sources */,
 				0FFBF72B231ABB0A005CEB0D /* AppRouter.swift in Sources */,
 				0FE03D4623209C3E00161018 /* MovieDetailRouter.swift in Sources */,
+				0F9D35532325E0D40001075C /* MovieDetail.swift in Sources */,
 				0F9CFA08231C0C6A00322DAB /* UIColor+Palette.swift in Sources */,
-				0F9CF9FF231B75A300322DAB /* MovieListCellViewModel.swift in Sources */,
 				0FFBF720231A2956005CEB0D /* MovieListRouter.swift in Sources */,
 				0FFBF71C231A1E3B005CEB0D /* MovieListPresenter.swift in Sources */,
 				0FE03D752324014500161018 /* MovieListViewModel.swift in Sources */,

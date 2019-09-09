@@ -14,6 +14,7 @@ final class MovieDetailPresenter {
     var interactor: MovieDetailInteractorInterface!
     
     var preloadMovie: BaseMovieProtocol
+    var viewModel: MovieDetail?
     
     init(_ router: MovieDetailRouterInterface, interactor: MovieDetailInteractorInterface, preloadMovie: BaseMovieProtocol) {
         self.router = router
@@ -27,10 +28,12 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
     
     func viewDidLoad() {
         self.viewDelegate.preload(previewMovie: self.preloadMovie)
+        self.interactor.fetchMovieDetail(id: self.preloadMovie.id)
     }
     
-    func movieFetchedSuccess(_ movie: Movie) {
-        self.viewDelegate.update(movie: movie)
+    func movieFetchedSuccess(_ movieDetail: MovieDetail) {
+        self.viewModel = movieDetail
+        self.viewDelegate.update()
     }
     
     func movieFetchedFail(_ error: String) {

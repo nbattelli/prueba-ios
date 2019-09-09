@@ -13,4 +13,6 @@ struct MovieViewModel: BaseMovieProtocol, Codable {
     let title: String
     let overview: String?
     let posterPath: String?
+    let voteAvarage: Double?
+    let releaseDate: String?
 }

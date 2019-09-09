@@ -12,6 +12,7 @@ target 'rappi-ios' do
   pod 'MaterialComponents/BottomNavigation'
   pod 'SDWebImage'
   pod 'ReachabilitySwift'
+  pod 'Cosmos', '~> 19.0'
 end
 
 

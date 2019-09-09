@@ -120,3 +120,14 @@ final class MovieListInteractorMock: MovieListInteractorInterface {
         self.fetchMovieThunk?()
     }
 }
+
+extension Movie {
+    init(id: Int, title: String, overview: String?) {
+        self.id = id
+        self.title = title
+        self.overview = overview
+        self.voteAvarage = nil
+        self.posterPath = nil
+        self.releaseDate = nil
+    }
+}

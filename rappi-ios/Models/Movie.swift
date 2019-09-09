@@ -22,6 +22,21 @@ struct Movie: Codable, BaseMovieProtocol {
     let originalTitle: String?
     let releaseDate: String?
     
+    init(id: Int, title: String, overview: String?) {
+        self.id = id
+        self.title = title
+        self.overview = overview
+        self.popularity = nil
+        self.voteAvarage = nil
+        self.voteCount = nil
+        self.hasVideo = nil
+        self.posterPath = nil
+        self.backdropPath = nil
+        self.adult = nil
+        self.originalTitle = nil
+        self.releaseDate = nil
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case title

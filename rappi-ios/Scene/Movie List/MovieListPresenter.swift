@@ -22,7 +22,7 @@ final class MovieListPresenter {
         return self.interactor.viewModel
     }
     
-    init(_ router: MovieListRouterInterface, interactor: MovieListInteractor) {
+    init(_ router: MovieListRouterInterface, interactor: MovieListInteractorInterface) {
         self.router = router
         self.interactor = interactor
         self.interactor.presenterDelegate = self
@@ -49,7 +49,6 @@ extension MovieListPresenter: MovieListPresenterInterface {
         if self.viewModel[self.currentCategory] == nil {
             self.fetchMovie(category: self.currentCategory, page: 1)
         }
-        
     }
     
     func categoryDidChange(_ category: MoviesCategory) {
@@ -96,8 +95,8 @@ extension MovieListPresenter: MovieListPresenterInterface {
     
     func numberOfSections(category: MoviesCategory) -> Int {
         guard let viewModel = self.viewModel[category] else { return 0 }
-        if self.viewModel[category]?.isFiltering ?? false ||
-            self.viewModel[category]?.isFromCache ?? false {
+        if viewModel.isFiltering ||
+            viewModel.isFromCache {
             return 1
         }
         return viewModel.hasMorePages ? 2 : 1

@@ -17,6 +17,8 @@
 		0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */; };
 		0F9D35532325E0D40001075C /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D35522325E0D40001075C /* MovieDetail.swift */; };
 		0F9D35552325E9960001075C /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D35542325E9960001075C /* TagLabel.swift */; };
+		0F9D3557232679C40001075C /* MovieVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3556232679C40001075C /* MovieVideos.swift */; };
+		0F9D3559232679F30001075C /* MovieVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3558232679F30001075C /* MovieVideo.swift */; };
 		0FB2A0EF231710C4007167D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB2A0EE231710C4007167D9 /* AppDelegate.swift */; };
 		0FB2A0F6231710D7007167D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F5231710D7007167D9 /* Assets.xcassets */; };
 		0FB2A0F9231710D7007167D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB2A0F7231710D7007167D9 /* LaunchScreen.storyboard */; };
@@ -85,6 +87,8 @@
 		0F9CFA09231C19C900322DAB /* UINavigationController+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Configuration.swift"; sourceTree = "<group>"; };
 		0F9D35522325E0D40001075C /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		0F9D35542325E9960001075C /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
+		0F9D3556232679C40001075C /* MovieVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideos.swift; sourceTree = "<group>"; };
+		0F9D3558232679F30001075C /* MovieVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideo.swift; sourceTree = "<group>"; };
 		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F5231710D7007167D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,6 +203,16 @@
 				0F9CFA04231B760100322DAB /* LoadingTableViewCell.xib */,
 			);
 			path = "Loading Cell";
+			sourceTree = "<group>";
+		};
+		0F9D355A2326D5110001075C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */,
+				0FE03D762324019B00161018 /* MovieViewModel.swift */,
+				0FE03D742324014400161018 /* MovieListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0FB2A0E2231710C4007167D9 = {
@@ -346,10 +360,11 @@
 		0FFBF70A2318B954005CEB0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0FE03D3F2320940F00161018 /* BaseMovieProtocol.swift */,
 				0FFBF70D2318C2CD005CEB0D /* Movies.swift */,
 				0FFBF70B2318B95F005CEB0D /* Movie.swift */,
 				0F9D35522325E0D40001075C /* MovieDetail.swift */,
+				0F9D3556232679C40001075C /* MovieVideos.swift */,
+				0F9D3558232679F30001075C /* MovieVideo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,6 +380,7 @@
 		0FFBF7122318CF76005CEB0D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				0F9D355A2326D5110001075C /* ViewModel */,
 				0FE03D5923233BFF00161018 /* Search Movie */,
 				0FFBF71A231A1791005CEB0D /* Movie List */,
 				0FED736A231E00A300E171EF /* Movie Detail */,
@@ -375,8 +391,6 @@
 		0FFBF71A231A1791005CEB0D /* Movie List */ = {
 			isa = PBXGroup;
 			children = (
-				0FE03D742324014400161018 /* MovieListViewModel.swift */,
-				0FE03D762324019B00161018 /* MovieViewModel.swift */,
 				0FFBF718231A1785005CEB0D /* MovieListInterface.swift */,
 				0FFBF7132318CF8D005CEB0D /* MovieListViewController.swift */,
 				0FFBF71B231A1E3B005CEB0D /* MovieListPresenter.swift */,
@@ -559,6 +573,7 @@
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -571,6 +586,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -607,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FE03D5C23233C6900161018 /* BannerView.swift in Sources */,
+				0F9D3559232679F30001075C /* MovieVideo.swift in Sources */,
 				0FFBF70C2318B95F005CEB0D /* Movie.swift in Sources */,
 				0FFBF7112318C333005CEB0D /* Paginable.swift in Sources */,
 				0F9D35552325E9960001075C /* TagLabel.swift in Sources */,
@@ -640,6 +657,7 @@
 				0FE03D442320991600161018 /* MovieDetailInteractor.swift in Sources */,
 				0FED7375231F4F0100E171EF /* CellTransitionViewProtocol.swift in Sources */,
 				0F9CF9FD231B6E2E00322DAB /* ConfigurableCell.swift in Sources */,
+				0F9D3557232679C40001075C /* MovieVideos.swift in Sources */,
 				0F9CFA0A231C19C900322DAB /* UINavigationController+Configuration.swift in Sources */,
 				0FFBF7142318CF8D005CEB0D /* MovieListViewController.swift in Sources */,
 				0FFBF728231A315F005CEB0D /* MovieListTableViewCell.swift in Sources */,
@@ -813,7 +831,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbattelli.rappi-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -832,7 +850,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbattelli.rappi-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

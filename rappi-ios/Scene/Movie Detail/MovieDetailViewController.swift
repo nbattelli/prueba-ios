@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import YoutubePlayer_in_WKWebView
 
 final class MovieDetailViewController: UIViewController {
     
@@ -30,6 +31,9 @@ final class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var genreStackView: UIStackView!
+    @IBOutlet weak var videosSectionView: UIView!
+    @IBOutlet weak var videosScrollView: UIScrollView!
+    @IBOutlet weak var videosStackView: UIStackView!
     
     var presenter: MovieDetailPresenterInterface!
     
@@ -52,6 +56,7 @@ final class MovieDetailViewController: UIViewController {
         
         self.setupReleaseDate()
         self.setupGenre()
+        self.setupVideos()
     }
     
     private func setupReleaseDate() {
@@ -90,6 +95,28 @@ final class MovieDetailViewController: UIViewController {
             self.genreStackView.addArrangedSubview(label)
         }
     }
+    
+    private func setupVideos() {
+        self.videosStackView.subviews.forEach {$0.removeFromSuperview()}
+        
+        guard let videosModel = self.presenter.videos, videosModel.count > 0 else {
+            self.videosSectionView.isHidden = true
+            return
+        }
+        
+        self.videosSectionView.isHidden = false
+        
+        videosModel.forEach {
+            let videoView = WKYTPlayerView()
+            videoView.backgroundColor = UIColor.primaryLightColor
+            videoView.load(withVideoId: $0.key)
+            self.videosStackView.addArrangedSubview(videoView)
+            
+            videoView.translatesAutoresizingMaskIntoConstraints = false
+            videoView.widthAnchor.constraint(equalToConstant: self.videosScrollView.frame.width).isActive = true
+            videoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true
+        }
+    }
 
 }
 
@@ -107,6 +134,10 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     func update() {
         self.setupReleaseDate()
         self.setupGenre()
+    }
+    
+    func updateVideos() {
+        self.setupVideos()
     }
     
     func showError(_ error: String) {

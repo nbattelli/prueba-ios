@@ -117,9 +117,6 @@ extension NetworkConnector {
         urlComponents.queryItems?.append(URLQueryItem(name: "api_key",
                                                       value: apiKey))
         
-        urlComponents.queryItems?.append(URLQueryItem(name: "language",
-                                                      value: "es-AR"))
-        
         request.url = urlComponents.url
     }
     

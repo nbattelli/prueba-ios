@@ -55,6 +55,7 @@ PODS:
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
+  - YoutubePlayer-in-WKWebView (0.3.2)
 
 DEPENDENCIES:
   - Cosmos (~> 19.0)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - MaterialComponents/Tabs
   - ReachabilitySwift
   - SDWebImage
+  - YoutubePlayer-in-WKWebView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -74,6 +76,7 @@ SPEC REPOS:
     - MotionInterchange
     - ReachabilitySwift
     - SDWebImage
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
@@ -83,7 +86,8 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
+  YoutubePlayer-in-WKWebView: f9c20a456c5d99e5f5248e4d2079a5d3b6950d13
 
-PODFILE CHECKSUM: 448b054bb8da16b24fd8526d39b93fd8a04edbc3
+PODFILE CHECKSUM: 174383e3ce8a074e58499c20aed67f4a90e627a3
 
 COCOAPODS: 1.6.1

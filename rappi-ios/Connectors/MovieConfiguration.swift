@@ -14,6 +14,7 @@ enum MovieConfigurator {
     case upComing(page:Int)
     case detail(id:String)
     case search(query:String)
+    case videos(id:String)
 }
 
 extension MovieConfigurator: NetworkConfiguration {
@@ -29,12 +30,14 @@ extension MovieConfigurator: NetworkConfiguration {
             return "movie/\(id)"
         case .search:
             return "search/movie"
+        case .videos(let id):
+            return "movie/\(id)/videos"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .topRated, .popular, .upComing, .detail, .search:
+        case .topRated, .popular, .upComing, .detail, .search, .videos:
             return .get
         }
     }
@@ -46,14 +49,16 @@ extension MovieConfigurator: NetworkConfiguration {
     var queryParameters: QueryParameters? {
         switch self {
         case .topRated(let page):
-            return ["page": page]
+            return ["page": page, "language": "es-AR"]
         case .popular(let page):
-            return ["page": page]
+            return ["page": page, "language": "es-AR"]
         case .upComing(let page):
-            return ["page": page]
+            return ["page": page, "language": "es-AR"]
         case .search(let query):
-            return ["query":query]
+            return ["query": query, "language": "es-AR"]
         case .detail:
+            return ["language": "es-AR"]
+        case .videos:
             return nil
         }
     }

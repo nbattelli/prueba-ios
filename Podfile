@@ -13,6 +13,8 @@ target 'rappi-ios' do
   pod 'SDWebImage'
   pod 'ReachabilitySwift'
   pod 'Cosmos', '~> 19.0'
+  pod 'YoutubePlayer-in-WKWebView'
+
 end
 
 

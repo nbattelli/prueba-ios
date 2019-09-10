@@ -12,6 +12,7 @@ import UIKit
 protocol MovieDetailViewInterface: class {
     func preload(previewMovie: BaseMovieProtocol)
     func update()
+    func updateVideos()
     func showError(_ error: String)
     func hideError()
     func showLoading(message: String)
@@ -25,17 +26,22 @@ protocol MovieDetailPresenterInterface: class {
     var interactor: MovieDetailInteractorInterface! { get }
     
     var viewModel: MovieDetail? { get }
+    var videos: [MovieVideo]? { get }
     
     func viewDidLoad()
     
     func movieFetchedSuccess(_ movie: MovieDetail)
     func movieFetchedFail(_ error: String)
+    
+    func movieVideosFetchedSuccess(_ videos: [MovieVideo])
+    func movieVideosFetchedFail(_ error: String)
 }
 
 //MARK: Interactor
 protocol MovieDetailInteractorInterface: class {
     var presenterDelegate: MovieDetailPresenterInterface! {set get}
     func fetchMovieDetail(id: Int)
+    func fetchMovieVideos(id: Int)
 }
 
 

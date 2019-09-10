@@ -89,7 +89,7 @@
 		0F9D35542325E9960001075C /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		0F9D3556232679C40001075C /* MovieVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideos.swift; sourceTree = "<group>"; };
 		0F9D3558232679F30001075C /* MovieVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideo.swift; sourceTree = "<group>"; };
-		0FB2A0EB231710C4007167D9 /* rappi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rappi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FB2A0EB231710C4007167D9 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2A0EE231710C4007167D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FB2A0F5231710D7007167D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FB2A0F8231710D7007167D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		0FB2A0EC231710C4007167D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0FB2A0EB231710C4007167D9 /* rappi-ios.app */,
+				0FB2A0EB231710C4007167D9 /* Movies.app */,
 				0FB2A0FF231710D7007167D9 /* rappi-iosTests.xctest */,
 			);
 			name = Products;
@@ -238,14 +238,14 @@
 		0FB2A0ED231710C4007167D9 /* rappi-ios */ = {
 			isa = PBXGroup;
 			children = (
-				0FFBF72C231AECCC005CEB0D /* Components */,
 				0FFBF721231A2AA9005CEB0D /* App */,
+				0FFBF72C231AECCC005CEB0D /* Components */,
+				0F8C363A231761D700FECB82 /* Utils */,
 				0FFBF7122318CF76005CEB0D /* Scene */,
 				0F8C363B231761DF00FECB82 /* Network */,
 				0FE03D552321AD8800161018 /* Repository */,
 				0FFBF70A2318B954005CEB0D /* Models */,
 				0FFBF7072318B02A005CEB0D /* Connectors */,
-				0F8C363A231761D700FECB82 /* Utils */,
 				0FB2A0F5231710D7007167D9 /* Assets.xcassets */,
 				0FB2A0FA231710D7007167D9 /* Info.plist */,
 			);
@@ -469,7 +469,7 @@
 			);
 			name = "rappi-ios";
 			productName = "rappi-ios";
-			productReference = 0FB2A0EB231710C4007167D9 /* rappi-ios.app */;
+			productReference = 0FB2A0EB231710C4007167D9 /* Movies.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0FB2A0FE231710D7007167D9 /* rappi-iosTests */ = {
@@ -829,7 +829,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbattelli.rappi-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Movies;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -848,7 +848,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nbattelli.rappi-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Movies;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

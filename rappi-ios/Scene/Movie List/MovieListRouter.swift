@@ -27,7 +27,7 @@ extension MovieListRouter: MovieListRouterInterface {
         self.navigationController.delegate = self
         
         
-        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                             target: self,
                                                             action: #selector(showSearchMovies))
 

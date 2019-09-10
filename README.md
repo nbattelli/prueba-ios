@@ -1,7 +1,3 @@
-# rappi-ios
-Ejercicio técnico Rappi
-
-
 # Arquitectura de la app
 La app cuenta con una capa simple de **persistencia** MovieRepository, la cual se utiliza para que la app funcione offline.
 
